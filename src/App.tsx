@@ -37,22 +37,22 @@ const TEAM = [
   { 
     name: "Ishaan", 
     color: "bg-lump-pink", 
-    image: "input_file_0.png" 
+    image: "/Images/Crew/Ishaan.jpg" 
   },
   { 
     name: "Calvin", 
     color: "bg-lump-blue", 
-    image: "input_file_1.png" 
+    image: "/Images/Crew/Calvin.jpg" 
   },
   { 
     name: "Hayden", 
     color: "bg-lump-orange", 
-    image: "input_file_2.png" 
+    image: "/Images/Crew/Hayden.jpg" 
   },
   { 
     name: "Jonathan", 
     color: "bg-green-400", 
-    image: "input_file_3.png" 
+    image: "/Images/Crew/Jonathan.jpg" 
   },
 ];
 
