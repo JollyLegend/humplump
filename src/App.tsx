@@ -20,7 +20,7 @@ import {
 
 // Easily add gallery images here
 const GALLERY_IMAGES = [
-  { url: "/Images/Poster/Hump Lump Poster.png", caption: "The 6 or 7 Skits Poster" },
+  { url: "Images/Poster/Hump Lump Poster.png", caption: "The 6 or 7 Skits Poster" },
   { url: "https://picsum.photos/seed/drama1/800/1000", caption: "Scene 1: The Alpha" },
   { url: "https://picsum.photos/seed/drama2/800/1000", caption: "Scene 2: The Mirror" },
   { url: "https://picsum.photos/seed/drama3/800/1000", caption: "Rehearsal Chaos" },
@@ -37,22 +37,22 @@ const TEAM = [
   { 
     name: "Ishaan", 
     color: "bg-lump-pink", 
-    image: "/Images/Crew/Ishaan.jpg" 
+    image: "Images/Crew/Ishaan.jpg" 
   },
   { 
     name: "Calvin", 
     color: "bg-lump-blue", 
-    image: "/Images/Crew/Calvin.jpg" 
+    image: "Images/Crew/Calvin.jpg" 
   },
   { 
     name: "Hayden", 
     color: "bg-lump-orange", 
-    image: "/Images/Crew/Hayden.jpg" 
+    image: "Images/Crew/Hayden.jpg" 
   },
   { 
     name: "Jonathan", 
     color: "bg-green-400", 
-    image: "/Images/Crew/Jonathan.jpg" 
+    image: "Images/Crew/Jonathan.jpg" 
   },
 ];
 
