@@ -20,7 +20,7 @@ import {
 
 // Easily add gallery images here
 const GALLERY_IMAGES = [
-  { url: "input_file_4.png", caption: "The 6 or 7 Skits Poster" },
+  { url: "/Images/Poster/Hump Lump Poster.png", caption: "The 6 or 7 Skits Poster" },
   { url: "https://picsum.photos/seed/drama1/800/1000", caption: "Scene 1: The Alpha" },
   { url: "https://picsum.photos/seed/drama2/800/1000", caption: "Scene 2: The Mirror" },
   { url: "https://picsum.photos/seed/drama3/800/1000", caption: "Rehearsal Chaos" },
@@ -131,29 +131,38 @@ export default function App() {
               <div className="absolute inset-0 sunburst-bg opacity-50 z-0 scale-150 animate-[spin_60s_linear_infinite]" />
               
               <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center">
-                <motion.div
-                  initial={{ scale: 0, rotate: -20 }}
-                  animate={{ scale: 1, rotate: 2 }}
-                  className="mb-12"
-                >
-                  <img 
-                    src="input_file_4.png" 
-                    alt="Hump Lump Poster" 
-                    className="w-full max-w-lg rounded-3xl border-8 border-lump-black shadow-[20px_20px_0_rgba(0,0,0,0.2)]"
-                  />
-                </motion.div>
-
                 <div className="text-center relative">
-                  <Star className="absolute -top-12 -left-12 w-12 h-12 text-lump-pink fill-lump-pink animate-bounce" />
-                  <Sparkles className="absolute -bottom-8 -right-8 w-16 h-16 text-lump-blue animate-pulse" />
+                  <Star className="absolute -top-32 -left-32 w-20 h-20 text-lump-pink fill-lump-pink animate-bounce hidden sm:block" />
+                  <Sparkles className="absolute -bottom-12 -right-12 w-24 h-24 text-lump-blue animate-pulse hidden sm:block" />
                   
-                  <motion.p className="font-comic text-3xl sm:text-5xl uppercase mb-2 text-white text-stroke-2 drop-shadow-[0_4px_0_rgba(0,0,0,1)]">
-                    Hump Lump Presents
-                  </motion.p>
-                  
-                  <motion.h1 className="font-heading text-[12vw] sm:text-9xl leading-none mb-6 drop-shadow-[0_8px_0_rgba(0,0,0,1)] text-stroke-2">
-                    6 OR <span className="text-lump-orange">7 SKITS</span>
-                  </motion.h1>
+                  {/* New Bubbly Logo Style */}
+                  <motion.div 
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="flex flex-col items-center mb-12"
+                  >
+                    {/* Hump Lump Bubbly */}
+                    <div className="flex items-center gap-0 font-logo text-[12vw] sm:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_12px_0_rgba(0,0,0,1)]">
+                      <span className="text-lump-pink text-stroke-4 -rotate-3 transition-transform hover:rotate-0">Hump</span>
+                      <span className="text-lump-blue text-stroke-4 rotate-3 transition-transform hover:rotate-0">Lump</span>
+                    </div>
+
+                    {/* - Presents - */}
+                    <div className="flex items-center gap-4 sm:gap-8 mb-4">
+                      <div className="h-2 w-12 sm:w-24 bg-lump-pink rounded-full" />
+                      <span className="font-comic text-4xl sm:text-6xl uppercase text-lump-black font-bold tracking-widest">Presents</span>
+                      <div className="h-2 w-12 sm:w-24 bg-lump-blue rounded-full" />
+                    </div>
+
+                    {/* 6 or 7 skits in Black Bubbly */}
+                    <motion.div 
+                      initial={{ y: 20 }}
+                      animate={{ y: 0 }}
+                      className="font-heading text-[15vw] sm:text-[12rem] leading-none text-lump-black drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic"
+                    >
+                      6 <span className="text-[10vw] sm:text-[8rem] lowercase font-comic -mx-4 sm:-mx-8">or</span> 7 skits
+                    </motion.div>
+                  </motion.div>
 
                   <div className="max-w-2xl mx-auto space-y-4">
                     <p className="text-xl sm:text-4xl font-comic leading-tight bg-white border-8 border-lump-black p-6 rounded-[2rem] -rotate-1 shadow-[8px_8px_0_rgba(0,0,0,0.1)]">
