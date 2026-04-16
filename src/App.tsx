@@ -18,9 +18,17 @@ import {
   Mic2
 } from "lucide-react";
 
+const base = import.meta.env.BASE_URL;
+const getAssetPath = (path: string) => {
+  if (path.startsWith('http')) return path;
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 // Easily add gallery images here
 const GALLERY_IMAGES = [
-  { url: "images/poster/hump-lump-poster.png", caption: "The 6 or 7 Skits Poster" },
+  { url: getAssetPath("images/poster/hump-lump-poster.png"), caption: "The 6 or 7 Skits Poster" },
   { url: "https://picsum.photos/seed/drama1/800/1000", caption: "Scene 1: The Alpha" },
   { url: "https://picsum.photos/seed/drama2/800/1000", caption: "Scene 2: The Mirror" },
   { url: "https://picsum.photos/seed/drama3/800/1000", caption: "Rehearsal Chaos" },
@@ -37,32 +45,41 @@ const TEAM = [
   { 
     name: "Ishaan", 
     color: "bg-lump-pink", 
-    image: "images/crew/ishaan.jpg" 
+    image: getAssetPath("images/crew/ishaan.jpg")
   },
   { 
     name: "Calvin", 
     color: "bg-lump-blue", 
-    image: "images/crew/calvin.jpg" 
+    image: getAssetPath("images/crew/calvin.jpg") 
   },
   { 
     name: "Hayden", 
     color: "bg-lump-orange", 
-    image: "images/crew/hayden.jpg" 
+    image: getAssetPath("images/crew/hayden.jpg") 
   },
   { 
     name: "Jonathan", 
     color: "bg-green-400", 
-    image: "images/crew/jonathan.jpg" 
+    image: getAssetPath("images/crew/jonathan.jpg") 
   },
 ];
 
 const QUOTES = [
-  "\"It's about the energy, the masculine energy.\"",
-  "\"Look at me. Look at my jawline.\"",
-  "\"Six... no, seven. Let's say six or seven.\"",
-  "\"Trust the process. Become the alpha.\"",
-  "\"VERBATIM. EXACTLY AS THEY ARE.\"",
-  "\"A surprise musical number? At this hour?\"",
+    "\"Now with 15% more High-Value energy.\"",
+    "\"Looksmaxxing: Because your jawline is a political statement.\"",
+    "\"Alpha, Sigma, or just confused? We’ve got a skit for that.\"",
+    "\"Crying is allowed, but only if it's satirical.\"",
+    "\"Reject modernity. Embrace the clown.\"",
+    "\"6 or 7 Skits. We honestly lost count.\"",
+    "\"Is it theater? Is it a playground? Is it a cry for help?\"",
+    "\"Verbatim dialogue. Real absurdity. Fake noses.\"",
+    "\"Breaking the fourth wall since " + new Date().toLocaleTimeString() + ".\"",
+    "\"Mastered honesty. Casual chaos.\"",
+    "\"Don't worry, the joke isn't about you... yet.\"",
+    "\"The only show where the audience is part of the problem.\"",
+    "\"Come for the puppetry, stay for the existential dread.\"",
+    "\"If you're not confused, you're not paying attention.\"",
+    "\"Sifting through the obscenity so you don't have to.\""
 ];
 
 export default function App() {
