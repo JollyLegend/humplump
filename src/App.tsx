@@ -18,15 +18,8 @@ import {
   Mic2
 } from "lucide-react";
 
-import ishaanImg from "../images/crew/ishaan.jpg";
-import calvinImg from "../images/crew/calvin.jpg";
-import haydenImg from "../images/crew/hayden.jpg";
-import jonathanImg from "../images/crew/jonathan.jpg";
-import posterImg from "../images/poster/hump-lump-poster.png";
-
-// Easily add gallery images here
 const GALLERY_IMAGES = [
-  { url: posterImg, caption: "The 6 or 7 Skits Poster" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Poster/Hump%20Lump%20Poster.jpg", caption: "The 6 or 7 Skits Poster" },
   { url: "https://picsum.photos/seed/drama1/800/1000", caption: "Scene 1: The Alpha" },
   { url: "https://picsum.photos/seed/drama2/800/1000", caption: "Scene 2: The Mirror" },
   { url: "https://picsum.photos/seed/drama3/800/1000", caption: "Rehearsal Chaos" },
@@ -43,22 +36,22 @@ const TEAM = [
   { 
     name: "Ishaan", 
     color: "bg-lump-pink", 
-    image: ishaanImg
+    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Crew/Ishaan.jpg"
   },
   { 
     name: "Calvin", 
     color: "bg-lump-blue", 
-    image: calvinImg 
+    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Crew/Calvin.jpg" 
   },
   { 
     name: "Hayden", 
     color: "bg-lump-orange", 
-    image: haydenImg 
+    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Crew/Hayden.jpg" 
   },
   { 
     name: "Jonathan", 
     color: "bg-green-400", 
-    image: jonathanImg 
+    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Crew/Jonathan.jpg" 
   },
 ];
 
