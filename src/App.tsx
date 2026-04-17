@@ -355,28 +355,6 @@ export default function App() {
           </motion.main>
         )}
       </AnimatePresence>
-
-      {/* View Switcher Overlay for Mobile ease */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-4 sm:hidden">
-         <button 
-           onClick={() => { setCurrentView('gallery'); window.scrollTo(0, 0); }} 
-           className={`bg-lump-blue text-white border-2 border-lump-black p-3 rounded-full shadow-[4px_4px_0_rgba(0,0,0,1)] active:shadow-none translate-y-0 active:translate-y-1 ${currentView === 'gallery' ? 'ring-4 ring-white' : ''}`}
-         >
-            <ImageIcon className="w-6 h-6" />
-         </button>
-         <button 
-           onClick={() => { setCurrentView('home'); window.scrollTo(0, 0); }} 
-           className={`bg-lump-pink text-white border-2 border-lump-black p-3 rounded-full shadow-[4px_4px_0_rgba(0,0,0,1)] active:shadow-none translate-y-0 active:translate-y-1 ${currentView === 'home' ? 'ring-4 ring-white' : ''}`}
-         >
-            <HomeIcon className="w-6 h-6" />
-         </button>
-         <button 
-           onClick={() => { setCurrentView('clips'); window.scrollTo(0, 0); }} 
-           className={`bg-lump-orange text-white border-2 border-lump-black p-3 rounded-full shadow-[4px_4px_0_rgba(0,0,0,1)] active:shadow-none translate-y-0 active:translate-y-1 ${currentView === 'clips' ? 'ring-4 ring-white' : ''}`}
-         >
-            <Play className="w-6 h-6" />
-         </button>
-      </div>
     </div>
   );
 }
