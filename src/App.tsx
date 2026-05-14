@@ -87,7 +87,7 @@ export default function App() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       onClick={() => setCurrentView('home')}
-      className="flex items-center gap-0 font-logo text-3xl md:text-5xl lg:text-6xl cursor-pointer select-none group"
+      className="flex items-center gap-0 font-heading font-bold text-3xl md:text-5xl lg:text-6xl cursor-pointer select-none group"
     >
       <span className="text-lump-pink text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:-rotate-3 group-hover:scale-110">Hump</span>
       <span className="text-lump-blue text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:rotate-3 group-hover:scale-110">Lump</span>
@@ -158,9 +158,9 @@ export default function App() {
                     className="flex flex-col items-center mb-8 sm:mb-12 landscape:mb-6"
                   >
                     {/* Hump Lump Bubbly */}
-                    <h1 className="flex items-center gap-0 font-logo text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_6px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_12px_0_rgba(0,0,0,1)]">
-                      <span className="text-lump-pink text-stroke-2 sm:text-stroke-4 -rotate-3 transition-transform hover:rotate-0">Hump</span>
-                      <span className="text-lump-blue text-stroke-2 sm:text-stroke-4 rotate-3 transition-transform hover:rotate-0">Lump</span>
+                    <h1 className="flex items-center gap-0 font-heading text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_8px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_16px_0_rgba(0,0,0,1)]">
+                      <span className="text-lump-pink text-stroke-4 lg:text-stroke-8 -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">Hump</span>
+                      <span className="text-lump-blue text-stroke-4 lg:text-stroke-8 rotate-3 transition-transform hover:rotate-0">Lump</span>
                     </h1>
 
                     {/* - Presents - */}
