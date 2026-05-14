@@ -29,12 +29,7 @@ const GALLERY_IMAGES = [
   { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/USA.jpg", caption: "The Patriot" },
 ];
 
-// Easily add YouTube links here
-const CLIPS = [
-  { id: "TK_9MlzGyuY", title: "Proof of Concept: 3 Skits", desc: "A verbatim look at our clowning world and performance structure." },
-  { id: "jNQXAC9IVRw", title: "The Musical Surprise", desc: "Don't say we didn't warn you." },
-];
-
+// Team configuration
 const TEAM = [
   { 
     name: "Ishaan", 
@@ -78,7 +73,7 @@ const QUOTES = [
 
 export default function App() {
   const [activeQuote, setActiveQuote] = useState(0);
-  const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'proposal', 'gallery', 'clips'
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'proposal', 'gallery'
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -133,13 +128,6 @@ export default function App() {
           >
             <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Gallery</span>
-          </button>
-          <button 
-            onClick={() => setCurrentView('clips')} 
-            className={`hover:text-lump-orange transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'clips' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
-          >
-            <Play className="w-5 h-5 sm:w-6 sm:h-6" /> 
-            <span className="hidden lg:inline">Clips</span>
           </button>
         </div>
       </nav>
@@ -219,34 +207,37 @@ export default function App() {
             {/* Satire Section */}
             <section className="bg-lump-blue py-16 sm:py-24 border-y-4 sm:border-y-8 border-lump-black relative overflow-hidden">
               <div className="container mx-auto px-4 sm:px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                  <motion.div className="bg-white p-6 sm:p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)] rotate-0 sm:rotate-2">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                  <motion.div className="bg-white p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rotate-0 sm:rotate-1">
                     <h2 className="font-heading text-5xl sm:text-8xl leading-none uppercase mb-4 sm:mb-6 drop-shadow-[0_2px_0_rgba(255,75,179,1)] sm:drop-shadow-[0_4px_0_rgba(255,75,179,1)]">
                       THE <br /> MIRROR
                     </h2>
-                    <p className="font-comic text-xl sm:text-4xl leading-tight">
-                      We don't create characters. We just hold the camera. We don't write scripts. We just record the air. 
-                      Verbatim theatre meets the red nose. A mirror to the podcasts, the platforms, and the politicians. 
+                    <p className="font-comic text-xl sm:text-3xl leading-tight mb-6">
+                      A look at our clowning world and performance structure. 
+                      This proof of concept features 3 skits that sift through the obscenity of modern discourse.
                     </p>
+                    <div className="bg-lump-yellow p-3 border-2 border-lump-black rounded-lg inline-block font-comic text-lg uppercase tracking-wider font-bold -rotate-1">
+                      Proof of Concept
+                    </div>
                   </motion.div>
 
-                  <div className="grid grid-cols-2 gap-4 sm:gap-8">
-                    {[
-                      { icon: Tv, label: "PLATFORMS", color: "bg-lump-pink" },
-                      { icon: Mic2, label: "PODCASTS", color: "bg-lump-yellow" },
-                      { icon: AlertCircle, label: "ALPHAS", color: "bg-lump-orange" },
-                      { icon: Music, label: "MUSICALS", color: "bg-white" },
-                    ].map((item, i) => (
-                      <motion.div 
-                        key={i}
-                        whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 4 : -4 }}
-                        className={`p-4 sm:p-8 border-4 sm:border-8 border-lump-black flex flex-col items-center justify-center gap-2 sm:gap-4 ${item.color} shadow-[4px_4px_0_rgba(0,0,0,1)] sm:shadow-[8px_8px_0_rgba(0,0,0,1)] group cursor-pointer h-32 sm:h-52`}
-                      >
-                        <item.icon className="w-10 h-10 sm:w-16 sm:h-16 stroke-[3px] sm:stroke-[4px]" />
-                        <span className="font-heading text-lg sm:text-2xl uppercase tracking-wider sm:tracking-widest text-center">{item.label}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                  <motion.div 
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="bg-white border-4 sm:border-8 border-lump-black p-3 sm:p-4 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)] w-full"
+                  >
+                    <div className="aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 sm:border-4 border-lump-black">
+                      <iframe 
+                        className="w-full h-full"
+                        src="https://www.youtube.com/embed/TK_9MlzGyuY"
+                        title="Hump Lump 3 Skits Proof of Concept"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </section>
@@ -343,7 +334,7 @@ export default function App() {
                   <ul className="font-comic text-xl sm:text-3xl space-y-4">
                     <li>🎭 Verbatim Theatre</li>
                     <li>🎈 Puppetry</li>
-                    <li>🌀 Absurdism & Repetition</li>
+                    <li>🌀 Absurdism</li>
                     <li>🎵 Musicality</li>
                   </ul>
                 </div>
@@ -465,47 +456,6 @@ export default function App() {
                   <div className="absolute inset-0 bg-lump-pink opacity-0 group-hover:opacity-20 transition-opacity rounded-xl sm:rounded-2xl" />
                   <div className="absolute bottom-4 left-4 right-4 bg-white border-2 sm:border-4 border-lump-black p-2 font-comic text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity rotate-1">
                     {img.caption}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.main>
-        )}
-
-        {currentView === 'clips' && (
-          <motion.main
-            key="clips"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="pt-40 pb-24 px-6 container mx-auto"
-          >
-             <div className="flex flex-col sm:flex-row justify-between items-baseline mb-12 sm:mb-16 gap-4">
-              <h2 className="font-heading text-6xl sm:text-8xl uppercase text-stroke-2 text-lump-orange drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">CLIPS</h2>
-              <p className="font-comic text-xl sm:text-2xl max-w-sm italic opacity-70 text-center sm:text-left w-full sm:w-auto">The 6 (or 7) highlights.</p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-              {CLIPS.map((clip, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="bg-white border-4 sm:border-8 border-lump-black p-3 sm:p-4 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[12px_12px_0_rgba(0,0,0,1)]"
-                >
-                  <div className="aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 sm:border-4 border-lump-black mb-4 sm:mb-6">
-                    <iframe 
-                      className="w-full h-full"
-                      src={`https://www.youtube.com/embed/${clip.id}`}
-                      title={clip.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                  <div className="px-2 sm:px-4 pb-2 sm:pb-4">
-                    <h3 className="font-heading text-3xl sm:text-4xl mb-1 sm:mb-2 text-lump-pink">{clip.title}</h3>
-                    <p className="font-comic text-xl sm:text-2xl opacity-80">{clip.desc}</p>
                   </div>
                 </motion.div>
               ))}
