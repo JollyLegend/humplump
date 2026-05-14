@@ -304,7 +304,7 @@ export default function App() {
               <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
                 <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-blue underline">Marketing Blurb</h3>
                 <p className="font-comic text-xl sm:text-2xl leading-tight">
-                  Are you desensitised to the 24-hour news cycle? Join Hump Lump for an unpredictable journey through 6 (maybe 7!) real-life stories covering today's biggest politics and pop culture moments. From toxic "Alpha" podcasts to AI-generated political meltdowns, we serve up a non-linear explosion of live costume changes and visceral physical comedy.
+                  Are you desensitised to the 24-hour news cycle? Join Hump Lump for an unpredictable journey through 6 (maybe 7!) real-life stories covering today's biggest politics and pop culture moments. From toxic "Alpha" podcasts to viral political meltdowns, we serve up a non-linear explosion of live costume changes and visceral physical comedy.
                 </p>
               </div>
             </div>
@@ -377,8 +377,8 @@ export default function App() {
                   <p className="font-comic text-lg">Using heightened movement, we explore the "Sigma Male" phenomenon as a form of physical home invasion, turning digital pressures into tangible threat.</p>
                 </div>
                 <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
-                  <h3 className="font-heading text-3xl mb-4 text-pink-500 uppercase">Verbatim & AI Critique</h3>
-                  <p className="font-comic text-lg">The production utilizes verbatim scripts and AI-generated text to highlight the fragility of modern leadership, transforming political addresses into physical emergencies.</p>
+                  <h3 className="font-heading text-3xl mb-4 text-pink-500 uppercase">Verbatim Critique</h3>
+                  <p className="font-comic text-lg">The production utilizes verbatim scripts to highlight the fragility of modern leadership, transforming political addresses into physical emergencies.</p>
                 </div>
               </div>
             </section>
