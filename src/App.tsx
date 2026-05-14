@@ -306,37 +306,23 @@ export default function App() {
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               <div className="flex-1 bg-lump-yellow p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
                 <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase underline">The Strap-line</h3>
-                <p className="font-comic text-2xl sm:text-5xl italic leading-none text-lump-pink drop-shadow-[1px_1px_0_rgba(0,0,0,1)]">
-                  "Sifting through the obscenity so you don't have to."
+                <p className="font-comic text-2xl sm:text-4xl italic leading-tight text-lump-pink drop-shadow-[1px_1px_0_rgba(0,0,0,1)]">
+                  "Breaking the numbness: A satirical assault on the modern world through the eyes of the unhinged."
                 </p>
               </div>
               <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
                 <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-blue underline">Marketing Blurb</h3>
                 <p className="font-comic text-xl sm:text-2xl leading-tight">
-                  A high-octane blend of verbatim testimony and traditional clowning, Hump Lump's "6 or 7 Skits" is the definitive satirical payload for a generation desensitized by the digital void.
+                  Are you desensitised to the 24-hour news cycle? Join Hump Lump for an unpredictable journey through 6 (maybe 7!) real-life stories covering today's biggest politics and pop culture moments. From toxic "Alpha" podcasts to AI-generated political meltdowns, we serve up a non-linear explosion of live costume changes and visceral physical comedy.
                 </p>
               </div>
             </div>
 
-            {/* Performance Synopsis */}
-            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)]">
-              <h2 className="font-heading text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Performance Synopsis</h2>
-              <div className="font-comic text-xl sm:text-3xl leading-relaxed space-y-6">
-                <p>
-                  "Hump Lump" is a satirical descent into the performative nature of modern discourse. Four clowns navigate a surreal "playground" where verbatim dialogue from viral podcasts, political rallies, and social media influencers is reimagined through the lens of absurd theatre.
-                </p>
-                <p>
-                  The show cycles through 6 (maybe 7!) high-energy skits that blur the lines between reality and farce. From the hyper-masculine posture of "Alpha" podcasts to the saccharine insincerity of corporate PR, no platform is safe from the mirror.
-                </p>
-              </div>
-            </section>
-
             {/* Mission Statement */}
             <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)]">
-              <h2 className="font-heading text-6xl sm:text-8xl text-lump-pink mb-6 uppercase">Mission</h2>
+              <h2 className="font-heading text-6xl sm:text-8xl text-lump-pink mb-6 uppercase transition-transform hover:-skew-x-12 inline-block">Mission</h2>
               <p className="font-comic text-2xl sm:text-4xl leading-tight">
-                To break numbness and provoke change by holding a theatrical mirror to the face of modern masculinity. 
-                We use verbatim theatre and clowning to expose the absurdity of real-world characters in a non-linear playground.
+                Hump Lump is a provocative theatre collective dedicated to dismantling the numbness of modern existence. By fusing the disruptive energy of personal clowning with "Rough Theatre" aesthetics, we confront the absurdities of contemporary politics and digital culture. We create a confrontational "playground" where the fourth wall is non-existent, inviting audiences to engage with uncomfortable truths through the liberating lens of satire.
               </p>
             </section>
 
@@ -344,14 +330,14 @@ export default function App() {
             <section className="bg-white p-6 sm:p-12 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(55,185,255,1)]">
               <h2 className="font-heading text-5xl sm:text-7xl text-lump-blue mb-8 uppercase text-center sm:text-left">Our Creative Approach</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <p className="font-comic text-xl sm:text-3xl leading-relaxed">
-                    A <span className="bg-lump-yellow px-2">"Play within a play frame"</span> work where literal clowns enter a "playground" to act out real world characters.
-                  </p>
-                  <p className="font-comic text-xl sm:text-3xl leading-relaxed">
-                    Exploring different styles of theatre through the lens of Satire, making commentary on each scene's story.
-                  </p>
-                </div>
+                  <div className="space-y-6">
+                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                      A <span className="bg-lump-yellow px-2 font-bold rotate-1 inline-block">"Play within a play frame"</span> where four personal clowns enter a designated "playground" to act out real world characters.
+                    </p>
+                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                      Exploring different styles of theatre through the lens of Satire, making commentary on each scene's story using <span className="bg-lump-blue text-white px-2">Rough Theatre</span> techniques.
+                    </p>
+                  </div>
                 <div className="bg-lump-black p-4 sm:p-8 text-white rounded-3xl transform rotate-1">
                   <h4 className="font-heading text-3xl sm:text-4xl mb-6 uppercase text-lump-pink underline">Key Tools</h4>
                   <ul className="font-comic text-xl sm:text-3xl space-y-4">
@@ -374,6 +360,38 @@ export default function App() {
             exit={{ opacity: 0, scale: 1.1 }}
             className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto space-y-12 sm:space-y-24"
           >
+            {/* Project Synopsis */}
+            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)]">
+              <h2 className="font-heading text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Project Synopsis</h2>
+              <div className="font-comic text-xl sm:text-3xl leading-relaxed space-y-6">
+                <p>
+                  <span className="font-bold underline decoration-lump-pink">6, Maybe 7 Skits</span> is a work of political and social satire structured as a series of rapid-fire, non-linear sketches. The production specifically utilizes <span className="italic font-bold text-lump-blue underline decoration-lump-black">"Rough Theatre"</span> techniques—keeping the mechanics of the performance entirely visible.
+                </p>
+                <p>
+                  We reject traditional theatrical artifice; there are no complex lighting cues or sound systems. Instead, the performance relies on the presence of the actors, acoustic sound, and the visceral reality of on-stage costume changes. This transparency ensures that the spectators are never passive observers but active participants in the shared physical reality of the "playground."
+                </p>
+              </div>
+            </section>
+
+            {/* Key Content Pillars */}
+            <section className="space-y-8">
+              <h2 className="font-heading text-5xl sm:text-7xl text-lump-pink uppercase text-center md:text-left">Key Content Pillars</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
+                  <h3 className="font-heading text-3xl mb-4 text-lump-blue uppercase">Hyper-Realistic Satire</h3>
+                  <p className="font-comic text-lg">In sequences like the "Chad Speaks" podcast, we abandon traditional theatricality for grounded realism. The satire becomes an uncomfortable reflection of reality.</p>
+                </div>
+                <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
+                  <h3 className="font-heading text-3xl mb-4 text-lump-orange uppercase">Physical Absurdism</h3>
+                  <p className="font-comic text-lg">Using heightened movement, we explore the "Sigma Male" phenomenon as a form of physical home invasion, turning digital pressures into tangible threat.</p>
+                </div>
+                <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
+                  <h3 className="font-heading text-3xl mb-4 text-pink-500 uppercase">Verbatim & AI Critique</h3>
+                  <p className="font-comic text-lg">The production utilizes verbatim scripts and AI-generated text to highlight the fragility of modern leadership, transforming political addresses into physical emergencies.</p>
+                </div>
+              </div>
+            </section>
+
             {/* Genre & Style Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
               <div className="bg-lump-yellow p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-2">
@@ -383,35 +401,34 @@ export default function App() {
               <div className="bg-lump-blue p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl -rotate-2 text-white">
                 <h3 className="font-heading text-4xl sm:text-5xl mb-4 uppercase italic">Style</h3>
                 <ul className="font-comic text-lg sm:text-2xl list-disc list-inside">
-                  <li>Clowning (Whiteface, Auguste, Hobo)</li>
-                  <li>Rough Theatre (4th Wall breaking)</li>
-                  <li>Audience Participation</li>
+                  <li>Personal Clowning (Devised)</li>
+                  <li>Rough Theatre (Visible mechanics)</li>
+                  <li>Direct Audience Participation</li>
                 </ul>
               </div>
               <div className="bg-lump-orange p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-1">
                 <h3 className="font-heading text-4xl sm:text-5xl text-lump-black mb-4 uppercase italic">Form</h3>
-                <p className="font-comic text-xl sm:text-2xl">Non-linear sketch structure capturing real-life stories covering politics and pop culture.</p>
+                <p className="font-comic text-xl sm:text-2xl">Non-linear sketch structure capturing 6 (maybe 7!) real-life stories covering today's biggest politics and pop culture moments.</p>
               </div>
             </div>
 
             {/* Technical Specification */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16">
               <div className="bg-lump-pink p-8 border-4 sm:border-8 border-lump-black text-white rounded-3xl -rotate-1">
-                <h3 className="font-heading text-4xl sm:text-5xl mb-6 uppercase underline">Technical Specs</h3>
+                <h3 className="font-heading text-4xl sm:text-5xl mb-6 uppercase underline">The Bare Essentials</h3>
                 <ul className="font-comic text-lg sm:text-2xl space-y-4">
-                  <li>🔊 Fully self-sufficient audio system.</li>
-                  <li>🎭 Live costume tracking & quick changes.</li>
-                  <li>🎡 "Trolley-based" set for rapid transit (inspired by the Butterfly House).</li>
-                  <li>🎟️ Minimal tech requirement: 13 amp plug if available.</li>
+                  <li>📍 Space: 5m x 5m "playground"</li>
+                  <li>⏱️ Duration: 45 – 60 minutes</li>
+                  <li>⚡ Set-Up/Strike: 20 mins each</li>
+                  <li>🎭 Company: 4 Performers</li>
                 </ul>
               </div>
               <div className="bg-white p-8 border-4 sm:border-8 border-lump-black rounded-3xl rotate-1 shadow-[8px_8px_0_rgba(0,0,0,1)]">
-                <h3 className="font-heading text-4xl sm:text-5xl text-lump-blue mb-6 uppercase italic">Risk Assessment</h3>
-                <ul className="font-comic text-lg sm:text-xl space-y-2 list-disc list-inside">
-                  <li>Risk of unintentional offense (managed via satire framing).</li>
-                  <li>Props handling & floor debris (quick sweep protocols).</li>
-                  <li>Audience interaction boundaries (clear cueing).</li>
-                  <li>High-energy movement safety (non-slip footwear).</li>
+                <h3 className="font-heading text-4xl sm:text-5xl text-lump-blue mb-6 uppercase italic">Low-Footprint Tech</h3>
+                <ul className="font-comic text-lg sm:text-xl space-y-2">
+                  <li>📢 <strong>No mics/PA:</strong> Acoustic & live vocal performance.</li>
+                  <li>💡 <strong>House lights:</strong> Performs under found/stable light.</li>
+                  <li>📦 <strong>Modular Set:</strong> Wheeled clothing racks and prop crates remain visible throughout.</li>
                 </ul>
               </div>
             </section>
