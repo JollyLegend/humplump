@@ -158,10 +158,10 @@ export default function App() {
                     className="flex flex-col items-center mb-8 sm:mb-12 landscape:mb-6"
                   >
                     {/* Hump Lump Bubbly */}
-                    <div className="flex items-center gap-0 font-logo text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_6px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_12px_0_rgba(0,0,0,1)]">
+                    <h1 className="flex items-center gap-0 font-logo text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_6px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_12px_0_rgba(0,0,0,1)]">
                       <span className="text-lump-pink text-stroke-2 sm:text-stroke-4 -rotate-3 transition-transform hover:rotate-0">Hump</span>
                       <span className="text-lump-blue text-stroke-2 sm:text-stroke-4 rotate-3 transition-transform hover:rotate-0">Lump</span>
-                    </div>
+                    </h1>
 
                     {/* - Presents - */}
                     <div className="flex items-center gap-4 sm:gap-8 mb-4 landscape:mb-2 text-center">
@@ -171,13 +171,13 @@ export default function App() {
                     </div>
 
                     {/* 6 or 7 skits in Black Bubbly */}
-                    <motion.div 
+                    <motion.h2 
                       initial={{ y: 20 }}
                       animate={{ y: 0 }}
                       className="font-heading text-[12vw] xs:text-[10vw] sm:text-[10rem] md:text-[8rem] lg:text-[12rem] leading-none text-lump-black drop-shadow-[0_4px_0_rgba(255,255,255,0.5)] sm:drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic text-center w-full"
                     >
                       6 <span className="text-[8vw] xs:text-[6vw] sm:text-[7rem] md:text-[5rem] lg:text-[8rem] lowercase font-comic -mx-2 sm:-mx-8">or</span> 7 skits
-                    </motion.div>
+                    </motion.h2>
                   </motion.div>
 
                   <div className="max-w-2xl mx-auto space-y-6 landscape:space-y-4">
