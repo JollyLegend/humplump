@@ -19,11 +19,14 @@ import {
 } from "lucide-react";
 
 const GALLERY_IMAGES = [
-  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Poster/Hump%20Lump%20Poster.jpg", caption: "The 6 or 7 Skits Poster" },
-  { url: "https://picsum.photos/seed/drama1/800/1000", caption: "Scene 1: The Alpha" },
-  { url: "https://picsum.photos/seed/drama2/800/1000", caption: "Scene 2: The Mirror" },
-  { url: "https://picsum.photos/seed/drama3/800/1000", caption: "Rehearsal Chaos" },
-  { url: "https://picsum.photos/seed/drama4/800/1000", caption: "Backstage" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Cheer.jpg", caption: "The Cheer" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Fight.jpg", caption: "The Fight" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Injection.jpg", caption: "The Injection" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Podcast.jpg", caption: "The Alpha Podcast" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Shook.jpg", caption: "Shock and Awe" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Song.jpg", caption: "A Musical Interlude" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Summoning.jpg", caption: "The Summoning" },
+  { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/USA.jpg", caption: "The Patriot" },
 ];
 
 // Easily add YouTube links here
