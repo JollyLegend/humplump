@@ -28,7 +28,7 @@ const GALLERY_IMAGES = [
 
 // Easily add YouTube links here
 const CLIPS = [
-  { id: "dQw4w9WgXcQ", title: "Teaser: The Alpha Podcast", desc: "A verbatim look at modern discourse." },
+  { id: "TK_9MlzGyuY", title: "Proof of Concept: 3 Skits", desc: "A verbatim look at our clowning world and performance structure." },
   { id: "jNQXAC9IVRw", title: "The Musical Surprise", desc: "Don't say we didn't warn you." },
 ];
 
@@ -75,7 +75,7 @@ const QUOTES = [
 
 export default function App() {
   const [activeQuote, setActiveQuote] = useState(0);
-  const [currentView, setCurrentView] = useState('home'); // 'home', 'gallery', 'clips'
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'proposal', 'gallery', 'clips'
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -102,27 +102,41 @@ export default function App() {
       <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center transition-all bg-lump-yellow/95 backdrop-blur-md border-b-4 sm:border-b-8 border-lump-black">
         <Logo />
         
-        <div className="flex gap-4 sm:gap-6 items-center font-comic text-xl sm:text-3xl uppercase tracking-wider">
+        <div className="flex gap-3 sm:gap-6 items-center font-comic text-lg sm:text-2xl uppercase tracking-wider overflow-x-auto no-scrollbar pb-2 sm:pb-0">
           <button 
             onClick={() => setCurrentView('home')} 
-            className={`hover:text-lump-pink transition-all flex items-center gap-2 ${currentView === 'home' ? 'text-lump-pink underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-pink transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'home' ? 'text-lump-pink underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <HomeIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
-            <span className="hidden md:inline">Home</span>
+            <span className="hidden lg:inline">Home</span>
+          </button>
+          <button 
+            onClick={() => setCurrentView('pitch')} 
+            className={`hover:text-lump-orange transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'pitch' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
+          >
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" /> 
+            <span className="hidden lg:inline">Pitch</span>
+          </button>
+          <button 
+            onClick={() => setCurrentView('proposal')} 
+            className={`hover:text-indigo-500 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'proposal' ? 'text-indigo-500 underline underline-offset-4 sm:underline-offset-8' : ''}`}
+          >
+            <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> 
+            <span className="hidden lg:inline">Proposal</span>
           </button>
           <button 
             onClick={() => setCurrentView('gallery')} 
-            className={`hover:text-lump-blue transition-all flex items-center gap-2 ${currentView === 'gallery' ? 'text-lump-blue underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-blue transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'gallery' ? 'text-lump-blue underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
-            <span className="hidden md:inline">Gallery</span>
+            <span className="hidden lg:inline">Gallery</span>
           </button>
           <button 
             onClick={() => setCurrentView('clips')} 
-            className={`hover:text-lump-orange transition-all flex items-center gap-2 ${currentView === 'clips' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-orange transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'clips' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <Play className="w-5 h-5 sm:w-6 sm:h-6" /> 
-            <span className="hidden md:inline">Clips</span>
+            <span className="hidden lg:inline">Clips</span>
           </button>
         </div>
       </nav>
@@ -272,6 +286,130 @@ export default function App() {
                     </motion.div>
                   ))}
                 </div>
+              </div>
+            </section>
+          </motion.main>
+        )}
+
+        {currentView === 'pitch' && (
+          <motion.main
+            key="pitch"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto space-y-12 sm:space-y-24"
+          >
+            {/* Strap-line & Blurb */}
+            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+              <div className="flex-1 bg-lump-yellow p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
+                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase underline">The Strap-line</h3>
+                <p className="font-comic text-2xl sm:text-5xl italic leading-none text-lump-pink drop-shadow-[1px_1px_0_rgba(0,0,0,1)]">
+                  "Sifting through the obscenity so you don't have to."
+                </p>
+              </div>
+              <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
+                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-blue underline">Marketing Blurb</h3>
+                <p className="font-comic text-xl sm:text-2xl leading-tight">
+                  A high-octane blend of verbatim testimony and traditional clowning, Hump Lump's "6 or 7 Skits" is the definitive satirical payload for a generation desensitized by the digital void.
+                </p>
+              </div>
+            </div>
+
+            {/* Performance Synopsis */}
+            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)]">
+              <h2 className="font-heading text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Performance Synopsis</h2>
+              <div className="font-comic text-xl sm:text-3xl leading-relaxed space-y-6">
+                <p>
+                  "Hump Lump" is a satirical descent into the performative nature of modern discourse. Four clowns navigate a surreal "playground" where verbatim dialogue from viral podcasts, political rallies, and social media influencers is reimagined through the lens of absurd theatre.
+                </p>
+                <p>
+                  The show cycles through 6 (maybe 7!) high-energy skits that blur the lines between reality and farce. From the hyper-masculine posture of "Alpha" podcasts to the saccharine insincerity of corporate PR, no platform is safe from the mirror.
+                </p>
+              </div>
+            </section>
+
+            {/* Mission Statement */}
+            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)]">
+              <h2 className="font-heading text-6xl sm:text-8xl text-lump-pink mb-6 uppercase">Mission</h2>
+              <p className="font-comic text-2xl sm:text-4xl leading-tight">
+                To break numbness and provoke change by holding a theatrical mirror to the face of modern masculinity. 
+                We use verbatim theatre and clowning to expose the absurdity of real-world characters in a non-linear playground.
+              </p>
+            </section>
+
+            {/* Creative Approach */}
+            <section className="bg-white p-6 sm:p-12 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(55,185,255,1)]">
+              <h2 className="font-heading text-5xl sm:text-7xl text-lump-blue mb-8 uppercase text-center sm:text-left">Our Creative Approach</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6">
+                  <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                    A <span className="bg-lump-yellow px-2">"Play within a play frame"</span> work where literal clowns enter a "playground" to act out real world characters.
+                  </p>
+                  <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                    Exploring different styles of theatre through the lens of Satire, making commentary on each scene's story.
+                  </p>
+                </div>
+                <div className="bg-lump-black p-4 sm:p-8 text-white rounded-3xl transform rotate-1">
+                  <h4 className="font-heading text-3xl sm:text-4xl mb-6 uppercase text-lump-pink underline">Key Tools</h4>
+                  <ul className="font-comic text-xl sm:text-3xl space-y-4">
+                    <li>🎭 Verbatim Theatre</li>
+                    <li>🎈 Puppetry</li>
+                    <li>🌀 Absurdism & Repetition</li>
+                    <li>🎵 Musicality</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </motion.main>
+        )}
+
+        {currentView === 'proposal' && (
+          <motion.main
+            key="proposal"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto space-y-12 sm:space-y-24"
+          >
+            {/* Genre & Style Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
+              <div className="bg-lump-yellow p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-2">
+                <h3 className="font-heading text-4xl sm:text-5xl text-lump-black mb-4 uppercase italic">Genre</h3>
+                <p className="font-comic text-xl sm:text-2xl">Political & Social Satire</p>
+              </div>
+              <div className="bg-lump-blue p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl -rotate-2 text-white">
+                <h3 className="font-heading text-4xl sm:text-5xl mb-4 uppercase italic">Style</h3>
+                <ul className="font-comic text-lg sm:text-2xl list-disc list-inside">
+                  <li>Clowning (Whiteface, Auguste, Hobo)</li>
+                  <li>Rough Theatre (4th Wall breaking)</li>
+                  <li>Audience Participation</li>
+                </ul>
+              </div>
+              <div className="bg-lump-orange p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-1">
+                <h3 className="font-heading text-4xl sm:text-5xl text-lump-black mb-4 uppercase italic">Form</h3>
+                <p className="font-comic text-xl sm:text-2xl">Non-linear sketch structure capturing real-life stories covering politics and pop culture.</p>
+              </div>
+            </div>
+
+            {/* Technical Specification */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16">
+              <div className="bg-lump-pink p-8 border-4 sm:border-8 border-lump-black text-white rounded-3xl -rotate-1">
+                <h3 className="font-heading text-4xl sm:text-5xl mb-6 uppercase underline">Technical Specs</h3>
+                <ul className="font-comic text-lg sm:text-2xl space-y-4">
+                  <li>🔊 Fully self-sufficient audio system.</li>
+                  <li>🎭 Live costume tracking & quick changes.</li>
+                  <li>🎡 "Trolley-based" set for rapid transit (inspired by the Butterfly House).</li>
+                  <li>🎟️ Minimal tech requirement: 13 amp plug if available.</li>
+                </ul>
+              </div>
+              <div className="bg-white p-8 border-4 sm:border-8 border-lump-black rounded-3xl rotate-1 shadow-[8px_8px_0_rgba(0,0,0,1)]">
+                <h3 className="font-heading text-4xl sm:text-5xl text-lump-blue mb-6 uppercase italic">Risk Assessment</h3>
+                <ul className="font-comic text-lg sm:text-xl space-y-2 list-disc list-inside">
+                  <li>Risk of unintentional offense (managed via satire framing).</li>
+                  <li>Props handling & floor debris (quick sweep protocols).</li>
+                  <li>Audience interaction boundaries (clear cueing).</li>
+                  <li>High-energy movement safety (non-slip footwear).</li>
+                </ul>
               </div>
             </section>
           </motion.main>
