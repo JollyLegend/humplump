@@ -18,8 +18,6 @@ import {
   Mic2,
   Download
 } from "lucide-react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 
 const GALLERY_IMAGES = [
   { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Cheer.jpg", caption: "The Cheer" },
@@ -85,34 +83,6 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const downloadProposalPDF = async () => {
-    const pdf = new jsPDF("p", "mm", "a4");
-    const container = document.getElementById("pdf-export-container");
-    if (!container) return;
-
-    // Temporarily show container for capture
-    container.style.display = "block";
-    const pages = container.querySelectorAll(".pdf-page");
-    
-    for (let i = 0; i < pages.length; i++) {
-      const page = pages[i] as HTMLElement;
-      const canvas = await html2canvas(page, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-      });
-      const imgData = canvas.toDataURL("image/png");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      
-      if (i > 0) pdf.addPage();
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    }
-
-    container.style.display = "none";
-    pdf.save("Hump_Lump_Full_Pitch.pdf");
-  };
-
   const Logo = () => (
     <motion.div 
       initial={{ y: -50, opacity: 0 }}
@@ -126,7 +96,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-lump-yellow text-lump-black overflow-x-hidden selection:bg-lump-pink selection:text-white font-sans">
+    <div className="min-h-screen bg-lump-yellow text-lump-black overflow-x-hidden selection:bg-lump-pink selection:text-white font-sans break-words hyphens-auto">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center transition-all bg-lump-yellow/95 backdrop-blur-md border-b-4 sm:border-b-8 border-lump-black">
         <Logo />
@@ -180,7 +150,7 @@ export default function App() {
                     className="flex flex-col items-center mb-8 sm:mb-12 landscape:mb-6"
                   >
                     {/* Hump Lump Bubbly */}
-                    <h1 className="flex items-center gap-0 font-heading font-black text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_8px_0_rgba(0,0,0,1)]">
+                    <h1 className="flex items-center gap-0 font-heading font-black text-[15vw] xs:text-[12vw] sm:text-[8rem] md:text-[6rem] lg:text-[9rem] leading-none mb-4 select-none drop-shadow-[0_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_8px_0_rgba(0,0,0,1)]">
                       <span className="text-lump-pink -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">HUMP</span>
                       <span className="text-lump-blue rotate-3 transition-transform hover:rotate-0">LUMP</span>
                     </h1>
@@ -188,7 +158,7 @@ export default function App() {
                     {/* - Presents - */}
                     <div className="flex items-center gap-4 sm:gap-8 mb-4 landscape:mb-2 text-center">
                       <div className="h-1.5 sm:h-2 w-8 sm:w-24 bg-lump-pink rounded-full hidden xs:block" />
-                      <span className="font-comic text-2xl md:text-4xl lg:text-6xl uppercase text-lump-black font-bold tracking-widest leading-none">Presents</span>
+                      <span className="font-comic text-xl sm:text-2xl md:text-3xl lg:text-5xl uppercase text-lump-black font-bold tracking-widest leading-none">Presents</span>
                       <div className="h-1.5 sm:h-2 w-8 sm:w-24 bg-lump-blue rounded-full hidden xs:block" />
                     </div>
 
@@ -196,9 +166,9 @@ export default function App() {
                     <motion.h2 
                       initial={{ y: 20 }}
                       animate={{ y: 0 }}
-                      className="font-heading font-extrabold text-[12vw] xs:text-[10vw] sm:text-[10rem] md:text-[8rem] lg:text-[12rem] leading-none text-lump-black drop-shadow-[0_4px_0_rgba(255,255,255,0.5)] sm:drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic text-center w-full"
+                      className="font-heading font-extrabold text-[15vw] xs:text-[12vw] sm:text-[9rem] md:text-[7rem] lg:text-[11rem] leading-none text-lump-black drop-shadow-[0_4px_0_rgba(255,255,255,0.5)] sm:drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic text-center w-full break-words"
                     >
-                      6 <span className="text-[8vw] xs:text-[6vw] sm:text-[7rem] md:text-[5rem] lg:text-[8rem] lowercase font-comic font-medium -mx-2 sm:-mx-8">or</span> 7 Skits
+                      6 <span className="text-[10vw] xs:text-[8vw] sm:text-[6rem] md:text-[4rem] lg:text-[7.5rem] lowercase font-comic font-medium -mx-2 sm:-mx-8">or</span> 7 Skits
                     </motion.h2>
                   </motion.div>
 
@@ -489,11 +459,11 @@ export default function App() {
             </section>
 
             <section className="mt-20 pt-16 border-t-8 border-lump-black">
-              <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-6">
-                <h2 className="font-heading font-black text-5xl sm:text-7xl uppercase text-lump-pink drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-6 px-4">
+                <h2 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase text-lump-pink drop-shadow-[4px_4px_0_rgba(0,0,0,1)] break-words text-center sm:text-left">
                   RISK ASSESSMENT
                 </h2>
-                <div className="bg-lump-black text-white font-comic px-6 py-3 rounded-xl -rotate-1 text-sm sm:text-base border-2 border-lump-pink shadow-[4px_4px_0_rgba(255,75,179,1)]">
+                <div className="bg-lump-black text-white font-comic px-4 py-2 sm:px-6 sm:py-3 rounded-xl -rotate-1 text-xs sm:text-base border-2 border-lump-pink shadow-[4px_4px_0_rgba(255,75,179,1)] text-center">
                   Key: L = Likelihood, S = Severity, RS = Risk Score (L×S)
                 </div>
               </div>
@@ -572,60 +542,60 @@ export default function App() {
                   }
                 ].map((risk) => (
                   <div key={risk.id} className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-4 border-lump-black rounded-2xl overflow-hidden shadow-[6px_6px_0_rgba(0,0,0,1)] bg-white">
-                    <div className={`${risk.color} lg:col-span-1 flex items-center justify-center p-4 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black`}>
-                      <span className="font-heading text-4xl text-white">{risk.id}</span>
+                    <div className={`${risk.color} lg:col-span-1 flex items-center justify-center p-3 sm:p-4 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black`}>
+                      <span className="font-heading text-3xl sm:text-4xl text-white">{risk.id}</span>
                     </div>
-                    <div className="lg:col-span-3 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
-                      <h4 className="font-heading text-2xl mb-2 uppercase">{risk.title}</h4>
-                      <p className="font-comic text-lg opacity-80">{risk.hazard}</p>
+                    <div className="lg:col-span-3 p-4 sm:p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
+                      <h4 className="font-heading text-xl sm:text-2xl mb-2 uppercase break-words">{risk.title}</h4>
+                      <p className="font-comic text-base sm:text-lg opacity-80 break-words">{risk.hazard}</p>
                     </div>
-                    <div className="lg:col-span-2 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black bg-gray-50">
+                    <div className="lg:col-span-2 p-4 sm:p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black bg-gray-50">
                       <h4 className="font-heading text-xs uppercase opacity-50 mb-2">Affected</h4>
-                      <p className="font-comic text-lg">{risk.persons}</p>
+                      <p className="font-comic text-base sm:text-lg break-words">{risk.persons}</p>
                     </div>
-                    <div className="lg:col-span-4 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
+                    <div className="lg:col-span-4 p-4 sm:p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
                       <h4 className="font-heading text-xs uppercase opacity-50 mb-2">Control Measures</h4>
-                      <ul className="font-comic text-lg list-disc list-inside space-y-1">
+                      <ul className="font-comic text-base sm:text-lg list-disc list-inside space-y-1 break-words">
                         {risk.controls.map((c, i) => <li key={i}>{c}</li>)}
                       </ul>
                     </div>
-                    <div className="lg:col-span-2 p-6 flex flex-row lg:flex-col justify-around lg:justify-center items-center gap-6 bg-gray-100">
+                    <div className="lg:col-span-2 p-4 sm:p-6 flex flex-row lg:flex-col justify-around lg:justify-center items-center gap-4 sm:gap-6 bg-gray-100 min-h-[120px] sm:min-h-0">
                       <div className="text-center">
-                        <div className="text-xs sm:text-sm font-heading uppercase opacity-50 mb-3">Initial</div>
-                        <div className="flex items-center gap-3 font-heading text-xl sm:text-2xl text-red-600">
+                        <div className="text-[10px] sm:text-sm font-heading uppercase opacity-50 mb-1 sm:mb-3">Initial</div>
+                        <div className="flex items-center gap-2 sm:gap-3 font-heading text-lg sm:text-2xl text-red-600">
                           <div className="flex flex-col">
-                            <span className="opacity-60 text-[10px]">L</span>
+                            <span className="opacity-60 text-[8px] sm:text-[10px]">L</span>
                             <span>{risk.initial.l}</span>
                           </div>
                           <span className="opacity-30">×</span>
                           <div className="flex flex-col">
-                            <span className="opacity-60 text-[10px]">S</span>
+                            <span className="opacity-60 text-[8px] sm:text-[10px]">S</span>
                             <span>{risk.initial.s}</span>
                           </div>
                           <span className="opacity-30">=</span>
                           <div className="flex flex-col">
-                            <span className="font-black text-[10px]">RS</span>
-                            <span className="font-black text-3xl sm:text-4xl">{risk.initial.rs}</span>
+                            <span className="font-black text-[8px] sm:text-[10px]">RS</span>
+                            <span className="font-black text-2xl sm:text-4xl">{risk.initial.rs}</span>
                           </div>
                         </div>
                       </div>
-                      <div className="w-px h-12 lg:w-16 lg:h-px bg-lump-black opacity-20"></div>
+                      <div className="w-px h-10 lg:w-16 lg:h-px bg-lump-black opacity-20"></div>
                       <div className="text-center">
-                        <div className="text-xs sm:text-sm font-heading uppercase opacity-50 mb-3">Target</div>
-                        <div className="flex items-center gap-3 font-heading text-xl sm:text-2xl text-green-600">
+                        <div className="text-[10px] sm:text-sm font-heading uppercase opacity-50 mb-1 sm:mb-3">Target</div>
+                        <div className="flex items-center gap-2 sm:gap-3 font-heading text-lg sm:text-2xl text-green-600">
                           <div className="flex flex-col">
-                            <span className="opacity-60 text-[10px]">L</span>
+                            <span className="opacity-60 text-[8px] sm:text-[10px]">L</span>
                             <span>{risk.target.l}</span>
                           </div>
                           <span className="opacity-30">×</span>
                           <div className="flex flex-col">
-                            <span className="opacity-60 text-[10px]">S</span>
+                            <span className="opacity-60 text-[8px] sm:text-[10px]">S</span>
                             <span>{risk.target.s}</span>
                           </div>
                           <span className="opacity-30">=</span>
                           <div className="flex flex-col">
-                            <span className="font-black text-[10px]">RS</span>
-                            <span className="font-black text-3xl sm:text-4xl">{risk.target.rs}</span>
+                            <span className="font-black text-[8px] sm:text-[10px]">RS</span>
+                            <span className="font-black text-2xl sm:text-4xl">{risk.target.rs}</span>
                           </div>
                         </div>
                       </div>
@@ -637,13 +607,15 @@ export default function App() {
 
             {/* PDF Download Section */}
             <section className="flex justify-center pt-16">
-              <button 
-                onClick={downloadProposalPDF}
-                className="bg-[#614bff] text-white font-heading text-3xl sm:text-5xl px-12 py-6 border-4 sm:border-8 border-lump-black shadow-[10px_10px_0_rgba(0,0,0,1)] rounded-full hover:scale-110 active:scale-95 transition-all flex items-center gap-4 group"
+              <a 
+                href="https://raw.githubusercontent.com/JollyLegend/humplump-pictures/89fa431262f9a59d76f0abf2b6b9f026500ffb99/Hump%20Lump%20-%20Pitch%20%26%20Proposal%20Final.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#614bff] text-white font-heading text-2xl xs:text-3xl sm:text-5xl px-8 sm:px-12 py-4 sm:py-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[10px_10px_0_rgba(0,0,0,1)] rounded-full hover:scale-110 active:scale-95 transition-all flex items-center gap-3 sm:gap-4 group no-underline decoration-transparent text-center"
               >
-                <Download className="w-10 h-10 group-hover:bounce transition-transform" />
-                <span>Download Full Pitch PDF</span>
-              </button>
+                <Download className="w-6 h-6 sm:w-10 sm:h-10 group-hover:bounce transition-transform flex-shrink-0" />
+                <span className="whitespace-normal">Download Full Pitch PDF</span>
+              </a>
             </section>
           </motion.main>
         )}
@@ -656,11 +628,11 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="pt-40 pb-24 px-6 container mx-auto"
+            className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto"
           >
             <div className="flex flex-col sm:flex-row justify-between items-baseline mb-12 sm:mb-16 gap-4">
-              <h2 className="font-heading font-black text-6xl sm:text-8xl uppercase text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">GALLERY</h2>
-              <p className="font-comic text-xl sm:text-2xl max-w-sm italic opacity-70 text-center sm:text-left w-full sm:w-auto">Visual evidence of the absurdity.</p>
+              <h2 className="font-heading font-black text-5xl xs:text-6xl sm:text-8xl uppercase text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto break-words">GALLERY</h2>
+              <p className="font-comic text-lg sm:text-2xl max-w-sm italic opacity-70 text-center sm:text-left w-full sm:w-auto">Visual evidence of the absurdity.</p>
             </div>
             
             <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
@@ -687,267 +659,6 @@ export default function App() {
           </motion.main>
         )}
       </AnimatePresence>
-
-      {/* Hidden PDF Export Structure */}
-      <div id="pdf-export-container" border-0 className="hidden" style={{ position: 'fixed', left: '-9999px', top: 0 }}>
-        {/* Page 1: Mission & Synopsis */}
-        <div className="pdf-page bg-white w-[210mm] h-[297mm] p-16 font-sans text-black overflow-hidden flex flex-col">
-          <div className="flex justify-between items-end border-b-8 border-black pb-4 mb-8">
-            <h1 className="text-6xl font-black"><span className="text-lump-pink">Hump</span><span className="text-lump-blue underline decoration-lump-pink">Lump</span></h1>
-            <div className="text-right">
-              <div className="text-lump-pink font-bold text-xl uppercase tracking-widest">Pitch & Proposal</div>
-              <div className="text-6xl font-black uppercase">6 OR 7 SKITS</div>
-            </div>
-          </div>
-
-          <div className="bg-black text-white p-8 rounded-3xl mb-12 text-center text-3xl italic font-serif">
-            "Six, maybe seven, clown-fed collisions with the absurdity of the modern world."
-          </div>
-
-          <div className="grid grid-cols-2 gap-12 flex-1">
-            <div className="space-y-8">
-              <div className="border-4 border-black p-8 rounded-3xl">
-                <h3 className="text-3xl font-black uppercase mb-4">Mission Statement</h3>
-                <p className="text-xl leading-relaxed">
-                  Hump Lump creates bold, playful and politically aware theatre that confronts the absurdity of contemporary politics, society and pop culture. Through clowning, satire, rough theatre and direct audience engagement, we aim to break through modern numbness and invite audiences to laugh, question and think again.
-                </p>
-              </div>
-              <div className="border-4 border-black p-4 rounded-3xl overflow-hidden">
-                <img src={GALLERY_IMAGES[0].url} alt="The Cheer" className="w-full aspect-video object-cover rounded-xl border-2 border-black" />
-                <p className="text-center italic mt-2 text-lg">The Cheer</p>
-              </div>
-            </div>
-
-            <div className="border-4 border-black p-8 rounded-3xl">
-              <h3 className="text-3xl font-black uppercase mb-4 text-[#ff8c00]">Project Synopsis</h3>
-              <div className="text-lg space-y-4 leading-relaxed italic font-serif">
-                <p><strong>6 or 7 Skits</strong> is a political and social satire created by Hump Lump, a devised theatre company exploring how world events can be reimagined through clowning, rough theatre and absurd performance.</p>
-                <p>The piece is structured as a non-linear sketch show made up of six, maybe seven, short skits. Each skit responds to a real-life political, social or pop-cultural event, using satire to expose the ridiculousness, contradictions and discomfort already present in the world around us.</p>
-                <p>The performance is framed as a “play within a play,” where literal clowns enter a theatrical playground to act out real-world figures, public narratives and media events. Rather than presenting these stories through realism, Hump Lump uses exaggeration, disruption and play to make familiar events feel strange again.</p>
-                <p>This allows the audience to encounter subjects they may already feel desensitised to, but from a new and uncomfortable angle.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Page 2: Marketing & Themes */}
-        <div className="pdf-page bg-white w-[210mm] h-[297mm] p-16 font-sans text-black overflow-hidden flex flex-col">
-          <div className="grid grid-cols-2 gap-12 mb-12">
-            <div className="border-4 border-black p-8 rounded-3xl">
-              <h3 className="text-3xl font-black uppercase mb-4 text-lump-blue font-sans">Marketing Blurb</h3>
-              <p className="text-xl leading-relaxed italic font-serif">
-                Feeling numb to the chaos of the world? 6 or 7 Skits throws politics, pop culture and modern masculinity into a clown-filled playground of satire. Through verbatim, puppetry, absurdism, music and audience interaction, Hump Lump turns real events into ridiculous, uncomfortable and strangely recognisable theatre.
-              </p>
-            </div>
-            <div className="border-4 border-black p-4 rounded-3xl flex flex-col justify-center">
-              <img src={GALLERY_IMAGES[3].url} alt="The Alpha Podcast" className="w-full aspect-[4/3] object-cover rounded-xl border-2 border-black mb-2" />
-              <p className="text-center italic text-lg">The Alpha Podcast</p>
-            </div>
-          </div>
-
-          <div className="border-4 border-black p-10 rounded-3xl flex-1">
-            <h3 className="text-4xl font-black uppercase mb-8 text-lump-pink underline decoration-black underline-offset-8">Style & Themes</h3>
-            <div className="text-xl space-y-8 leading-relaxed italic font-serif">
-              <p>The company’s style combines clowning, rough theatre, verbatim material, puppetry, absurdism, repetition and musicality. Traditional clown archetypes such as the Whiteface, Auguste and Hobo/Tramp inform the company’s character work, while rough theatre shapes the live, exposed and deliberately imperfect quality of the performance. Costume changes happen in view, the fourth wall is broken, and the audience are treated as active witnesses rather than passive observers.</p>
-              <p>Thematically, the work is connected through masculinity. As four male performers, the company uses satire to question the performance of male power, authority, ego, control and fragility across political and cultural spaces. The piece does not aim to provide neat answers. Instead, it creates a space where laughter becomes a way into discomfort, and where the absurdity of real events can be made visible again.</p>
-              <p className="font-bold">Ultimately, 6 or 7 Skits aims to break through numbness. In a world where contradiction, spectacle and irresponsibility can quickly become normalised, Hump Lump uses clowning and satire to remind audiences that the outrageous should still feel outrageous.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Page 3: Tech & Risk 1-2 */}
-        <div className="pdf-page bg-white w-[210mm] h-[297mm] p-12 font-sans text-black flex flex-col">
-          <h2 className="text-5xl font-black text-center mb-8 border-b-4 border-black pb-4">Key Technical Information</h2>
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            {[
-              { label: "Show Duration", value: "45 Minutes" },
-              { label: "Set Up / Strike", value: "20 Minutes Each" },
-              { label: "Company Size", value: "4 Performers" },
-              { label: "Host Fees", value: "clowns@humplump.com" },
-              { label: "Space Required", value: "8m x 8m x 4m" },
-              { label: "Parking Required", value: "1 Touring Van" },
-            ].map((item, i) => (
-              <div key={i} className="border-4 border-black p-4 rounded-xl">
-                <div className="text-lump-pink font-bold uppercase text-sm mb-1">{item.label}</div>
-                <div className="font-bold text-lg">{item.value}</div>
-              </div>
-            ))}
-            <div className="border-4 border-black p-4 rounded-xl">
-              <div className="text-lump-pink font-bold uppercase text-sm mb-1">Access Needs</div>
-              <div className="font-bold text-lg">None</div>
-            </div>
-            <div className="border-4 border-black p-4 rounded-xl col-span-2">
-              <div className="text-lump-pink font-bold uppercase text-sm mb-1">Tech Requirements</div>
-              <div className="font-bold text-base">Fully Self-Sufficient. No mics, house lights, modular set.</div>
-            </div>
-          </div>
-
-          <h2 className="text-4xl font-black text-center mb-6">Performance Risk Assessment</h2>
-          
-          <div className="bg-lump-black p-4 rounded-2xl mb-6 flex justify-between items-center text-white">
-            <div className="font-bold uppercase">Risk Assessment Key</div>
-            <div className="flex gap-4">
-              <span className="bg-lump-pink px-2 py-1 rounded text-xs font-bold">HIGH (RS 11-25)</span>
-              <span className="bg-lump-orange px-2 py-1 rounded text-xs font-bold">MEDIUM (RS 6-10)</span>
-              <span className="bg-green-500 px-2 py-1 rounded text-xs font-bold">LOW (RS 1-5)</span>
-            </div>
-          </div>
-
-          <div className="flex-1 border-4 border-black rounded-3xl overflow-hidden">
-            <table className="w-full h-full border-collapse">
-              <thead>
-                <tr className="bg-black text-white uppercase text-[10px]">
-                  <th className="p-2 border-r border-white/20">Hazard</th>
-                  <th className="p-2 border-r border-white/20">Persons</th>
-                  <th className="p-2 border-r border-white/20">Initial RS</th>
-                  <th className="p-2 border-r border-white/20">Controls</th>
-                  <th className="p-2">Target RS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b-2 border-black">
-                  <td className="p-4 w-1/4 border-r-2 border-black font-bold text-sm text-lump-pink">R1: THE LIFT (SIGMA SKIT)</td>
-                  <td className="p-4 w-1/6 border-r-2 border-black text-xs">Ishaan & Calvin (Strains, hernia, fractures)</td>
-                  <td className="p-4 w-40 border-r-2 border-black">
-                    <div className="bg-lump-pink p-2 text-white text-center rounded">
-                      <div className="text-[8px] font-bold">RS: 12</div>
-                      <div className="text-[8px] font-black uppercase">HIGH</div>
-                    </div>
-                  </td>
-                  <td className="p-4 border-r-2 border-black text-xs italic">
-                    <ul className="list-disc ml-4 space-y-1">
-                      <li>Walked through/rehearsed at half speed.</li>
-                      <li>Uses proper lifting form (legs, back).</li>
-                      <li>Tight core tension.</li>
-                      <li>Barefoot footwear for balance.</li>
-                    </ul>
-                  </td>
-                  <td className="p-4 w-40 text-center">
-                    <div className="bg-green-500 p-2 text-white rounded">
-                      <div className="text-[8px] font-bold">RS: 3</div>
-                      <div className="text-[8px] font-black uppercase">LOW</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 border-r-2 border-black font-bold text-sm text-lump-blue">R2: SLIP HAZARD (CEREAL)</td>
-                  <td className="p-4 border-r-2 border-black text-xs">Cast (Slipping, pulled muscles, bruising)</td>
-                  <td className="p-4 border-r-2 border-black">
-                    <div className="bg-lump-orange p-2 text-white text-center rounded">
-                      <div className="text-[8px] font-bold">RS: 8</div>
-                      <div className="text-[8px] font-black uppercase">MED</div>
-                    </div>
-                  </td>
-                  <td className="p-4 border-r-2 border-black text-xs italic">
-                    <ul className="list-disc ml-4 space-y-1">
-                      <li>Limit cereal amount to bare minimum.</li>
-                      <li>Crushed in contained area away from paths.</li>
-                      <li>Immediate sweep during transitions.</li>
-                    </ul>
-                  </td>
-                  <td className="p-4 text-center">
-                    <div className="bg-green-500 p-2 text-white rounded">
-                      <div className="text-[8px] font-bold">RS: 4</div>
-                      <div className="text-[8px] font-black uppercase">LOW</div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Page 4: Risk 3-5 */}
-        <div className="pdf-page bg-white w-[210mm] h-[297mm] p-12 font-sans text-black flex flex-col">
-          <div className="flex-1 border-4 border-black rounded-3xl overflow-hidden">
-            <table className="w-full h-full border-collapse">
-              <thead>
-                <tr className="bg-black text-white uppercase text-[10px]">
-                  <th className="p-2 border-r border-white/20">Hazard</th>
-                  <th className="p-2 border-r border-white/20">Persons</th>
-                  <th className="p-2 border-r border-white/20">Initial RS</th>
-                  <th className="p-2 border-r border-white/20">Controls</th>
-                  <th className="p-2">Target RS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b-2 border-black">
-                  <td className="p-4 w-1/4 border-r-2 border-black font-bold text-sm text-lump-orange">R3: LIVE CHANGES</td>
-                  <td className="p-4 w-1/6 border-r-2 border-black text-xs">Cast (Tripping over clothing, sprains)</td>
-                  <td className="p-4 w-40 border-r-2 border-black">
-                    <div className="bg-lump-orange p-2 text-white text-center rounded">
-                      <div className="text-[8px] font-bold">RS: 9</div>
-                      <div className="text-[8px] font-black uppercase">MED</div>
-                    </div>
-                  </td>
-                  <td className="p-4 border-r-2 border-black text-xs italic">
-                    <ul className="list-disc ml-4 space-y-1">
-                      <li>Designated safe zones for clothing.</li>
-                      <li>Clothing racks wheels locked.</li>
-                      <li>Prop crates clearly labeled and secure.</li>
-                    </ul>
-                  </td>
-                  <td className="p-4 w-40 text-center">
-                    <div className="bg-green-500 p-2 text-white rounded">
-                      <div className="text-[8px] font-bold">RS: 4</div>
-                      <div className="text-[8px] font-black uppercase">LOW</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-black">
-                  <td className="p-4 border-r-2 border-black font-bold text-sm text-lump-green">R4: PHYSICAL COMEDY</td>
-                  <td className="p-4 border-r-2 border-black text-xs">Cast (Head bumps, joint injuries, bruising)</td>
-                  <td className="p-4 border-r-2 border-black">
-                    <div className="bg-lump-orange p-2 text-white text-center rounded">
-                      <div className="text-[8px] font-bold">RS: 9</div>
-                      <div className="text-[8px] font-black uppercase">MED</div>
-                    </div>
-                  </td>
-                  <td className="p-4 border-r-2 border-black text-xs italic">
-                    <ul className="list-disc ml-4 space-y-1">
-                      <li>Strictly blocked falls (impact reduction).</li>
-                      <li>Spatial awareness and eye contact cues.</li>
-                      <li>Slow rehearsals to prepare for slips.</li>
-                    </ul>
-                  </td>
-                  <td className="p-4 text-center">
-                    <div className="bg-green-500 p-2 text-white rounded">
-                      <div className="text-[8px] font-bold">RS: 3</div>
-                      <div className="text-[8px] font-black uppercase">LOW</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 border-r-2 border-black font-bold text-sm text-lump-yellow">R5: MANUAL HANDLING</td>
-                  <td className="p-4 border-r-2 border-black text-xs">Cast (Back injuries, dropped items on toes)</td>
-                  <td className="p-4 border-r-2 border-black">
-                    <div className="bg-lump-orange p-2 text-white text-center rounded">
-                      <div className="text-[8px] font-bold">RS: 6</div>
-                      <div className="text-[8px] font-black uppercase">MED</div>
-                    </div>
-                  </td>
-                  <td className="p-4 border-r-2 border-black text-xs italic">
-                    <ul className="list-disc ml-4 space-y-1">
-                      <li>Toolbox talk prior to get-in.</li>
-                      <li>Utilize safe lifting techniques (knees).</li>
-                      <li>Team-lifting for heavy blocks.</li>
-                    </ul>
-                  </td>
-                  <td className="p-4 text-center">
-                    <div className="bg-green-500 p-2 text-white rounded">
-                      <div className="text-[8px] font-bold">RS: 2</div>
-                      <div className="text-[8px] font-black uppercase">LOW</div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="mt-8 text-center text-gray-400 text-xs italic">
-            End of Pitch & Proposal document. For any inquiries, contact clowns@humplump.com
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
