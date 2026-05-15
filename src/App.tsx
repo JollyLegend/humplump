@@ -87,10 +87,10 @@ export default function App() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       onClick={() => setCurrentView('home')}
-      className="flex items-center gap-0 font-heading font-bold text-3xl md:text-5xl lg:text-6xl cursor-pointer select-none group"
+      className="flex items-center gap-0 font-heading font-black text-3xl md:text-5xl lg:text-6xl cursor-pointer select-none group"
     >
-      <span className="text-lump-pink text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:-rotate-3 group-hover:scale-110">Hump</span>
-      <span className="text-lump-blue text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:rotate-3 group-hover:scale-110">Lump</span>
+      <span className="text-lump-pink text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:-rotate-3 group-hover:scale-110">HUMP</span>
+      <span className="text-lump-blue text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:rotate-3 group-hover:scale-110">LUMP</span>
     </motion.div>
   );
 
@@ -100,31 +100,31 @@ export default function App() {
       <nav className="fixed top-0 left-0 w-full z-50 px-4 py-3 sm:px-6 sm:py-4 flex justify-between items-center transition-all bg-lump-yellow/95 backdrop-blur-md border-b-4 sm:border-b-8 border-lump-black">
         <Logo />
         
-        <div className="flex gap-3 sm:gap-6 items-center font-comic text-lg sm:text-2xl uppercase tracking-wider overflow-x-auto no-scrollbar pb-2 sm:pb-0">
+        <div className="flex gap-3 sm:gap-6 items-center font-comic font-black text-lg sm:text-2xl uppercase tracking-wider overflow-x-auto no-scrollbar pb-2 sm:pb-0">
           <button 
             onClick={() => setCurrentView('home')} 
-            className={`hover:text-lump-pink transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'home' ? 'text-lump-pink underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-pink hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'home' ? 'text-lump-pink underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <HomeIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Home</span>
           </button>
           <button 
             onClick={() => setCurrentView('pitch')} 
-            className={`hover:text-lump-orange transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'pitch' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-orange hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'pitch' ? 'text-lump-orange underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Pitch</span>
           </button>
           <button 
             onClick={() => setCurrentView('proposal')} 
-            className={`hover:text-indigo-500 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'proposal' ? 'text-indigo-500 underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-indigo-500 hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'proposal' ? 'text-indigo-500 underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Proposal</span>
           </button>
           <button 
             onClick={() => setCurrentView('gallery')} 
-            className={`hover:text-lump-blue transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'gallery' ? 'text-lump-blue underline underline-offset-4 sm:underline-offset-8' : ''}`}
+            className={`hover:text-lump-blue hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'gallery' ? 'text-lump-blue underline underline-offset-4 sm:underline-offset-8' : ''}`}
           >
             <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Gallery</span>
@@ -158,9 +158,9 @@ export default function App() {
                     className="flex flex-col items-center mb-8 sm:mb-12 landscape:mb-6"
                   >
                     {/* Hump Lump Bubbly */}
-                    <h1 className="flex items-center gap-0 font-heading text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_8px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_16px_0_rgba(0,0,0,1)]">
-                      <span className="text-lump-pink text-stroke-4 lg:text-stroke-8 -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">Hump</span>
-                      <span className="text-lump-blue text-stroke-4 lg:text-stroke-8 rotate-3 transition-transform hover:rotate-0">Lump</span>
+                    <h1 className="flex items-center gap-0 font-heading font-black text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_8px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_16px_0_rgba(0,0,0,1)]">
+                      <span className="text-lump-pink text-stroke-4 lg:text-stroke-8 -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">HUMP</span>
+                      <span className="text-lump-blue text-stroke-4 lg:text-stroke-8 rotate-3 transition-transform hover:rotate-0">LUMP</span>
                     </h1>
 
                     {/* - Presents - */}
@@ -174,15 +174,15 @@ export default function App() {
                     <motion.h2 
                       initial={{ y: 20 }}
                       animate={{ y: 0 }}
-                      className="font-heading text-[12vw] xs:text-[10vw] sm:text-[10rem] md:text-[8rem] lg:text-[12rem] leading-none text-lump-black drop-shadow-[0_4px_0_rgba(255,255,255,0.5)] sm:drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic text-center w-full"
+                      className="font-heading font-extrabold text-[12vw] xs:text-[10vw] sm:text-[10rem] md:text-[8rem] lg:text-[12rem] leading-none text-lump-black drop-shadow-[0_4px_0_rgba(255,255,255,0.5)] sm:drop-shadow-[0_10px_0_rgba(255,255,255,0.5)] select-none italic text-center w-full"
                     >
-                      6 <span className="text-[8vw] xs:text-[6vw] sm:text-[7rem] md:text-[5rem] lg:text-[8rem] lowercase font-comic -mx-2 sm:-mx-8">or</span> 7 Skits
+                      6 <span className="text-[8vw] xs:text-[6vw] sm:text-[7rem] md:text-[5rem] lg:text-[8rem] lowercase font-comic font-medium -mx-2 sm:-mx-8">or</span> 7 Skits
                     </motion.h2>
                   </motion.div>
 
                   <div className="max-w-2xl mx-auto space-y-6 landscape:space-y-4">
                     <p className="text-lg sm:text-4xl md:text-2xl lg:text-4xl font-comic leading-tight bg-white border-4 sm:border-8 border-lump-black p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] -rotate-1 shadow-[4px_4px_0_rgba(0,0,0,0.1)] sm:shadow-[8px_8px_0_rgba(0,0,0,0.1)]">
-                      Six, maybe seven, clown-fed collisions with the absurdity of the modern world.
+                      A theatrical mirror held up to the face of modern masculinity. Surprisingly musical.
                     </p>
                     
                     <div className="h-12 sm:h-16 flex items-center justify-center pointer-events-none mb-12 lg:mb-0">
@@ -208,7 +208,7 @@ export default function App() {
               <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
                   <motion.div className="bg-white p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rotate-0 sm:rotate-1">
-                    <h2 className="font-heading text-5xl sm:text-8xl leading-none uppercase mb-4 sm:mb-6 drop-shadow-[0_2px_0_rgba(255,75,179,1)] sm:drop-shadow-[0_4px_0_rgba(255,75,179,1)]">
+                    <h2 className="font-heading font-black text-5xl sm:text-8xl leading-none uppercase mb-4 sm:mb-6 drop-shadow-[0_2px_0_rgba(255,75,179,1)] sm:drop-shadow-[0_4px_0_rgba(255,75,179,1)]">
                       THE <br /> MIRROR
                     </h2>
                     <p className="font-comic text-xl sm:text-3xl leading-tight mb-6">
@@ -244,7 +244,7 @@ export default function App() {
             <section id="about" className="py-16 sm:py-32 px-4 sm:px-6 bg-white relative">
               <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 sm:mb-24 gap-6 sm:gap-8 text-center md:text-left">
-                  <h2 className="font-heading text-7xl sm:text-9xl leading-none uppercase drop-shadow-[0_3px_0_rgba(55,185,255,1)] sm:drop-shadow-[0_6px_0_rgba(55,185,255,1)]">
+                  <h2 className="font-heading font-black text-7xl sm:text-9xl leading-none uppercase drop-shadow-[0_3px_0_rgba(55,185,255,1)] sm:drop-shadow-[0_6px_0_rgba(55,185,255,1)] transition-all hover:scale-105 active:scale-95 cursor-default">
                     THE <br /> CREW
                   </h2>
                   <div className="max-w-xs sm:max-w-sm font-comic text-2xl sm:text-3xl rotate-0 sm:rotate-2 bg-lump-yellow p-4 sm:p-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[12px_12px_0_rgba(0,0,0,1)] rounded-xl">
@@ -309,7 +309,7 @@ export default function App() {
 
             {/* Mission Statement */}
             <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)]">
-              <h2 className="font-heading text-6xl sm:text-8xl text-lump-pink mb-6 uppercase transition-transform hover:-skew-x-12 inline-block">Mission</h2>
+              <h2 className="font-heading font-black text-6xl sm:text-8xl text-lump-pink mb-6 uppercase transition-transform hover:-skew-x-12 inline-block">Mission</h2>
               <p className="font-comic text-2xl sm:text-4xl leading-tight">
                 Hump Lump creates bold, playful and politically aware theatre that confronts the absurdity of contemporary politics, society and pop culture. Through clowning, satire, rough theatre and direct audience engagement, we aim to break through modern numbness and invite audiences to laugh, question and think again.
               </p>
@@ -351,7 +351,7 @@ export default function App() {
           >
             {/* Project Synopsis */}
             <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)]">
-              <h2 className="font-heading text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Project Synopsis</h2>
+              <h2 className="font-heading font-black text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Project Synopsis</h2>
               <div className="font-comic text-xl sm:text-3xl leading-relaxed space-y-6">
                 <p>
                   <span className="font-bold underline decoration-lump-pink text-lump-black">6 or 7 Skits</span> is a political and social satire created by Hump Lump, a devised theatre company exploring how world events can be reimagined through clowning, rough theatre and absurd performance.
@@ -364,7 +364,7 @@ export default function App() {
 
             {/* Key Content Pillars */}
             <section className="space-y-8">
-              <h2 className="font-heading text-5xl sm:text-7xl text-lump-pink uppercase text-center md:text-left">Key Content Pillars</h2>
+              <h2 className="font-heading font-black text-5xl sm:text-7xl text-lump-pink uppercase text-center md:text-left">Key Content Pillars</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
                   <h3 className="font-heading text-3xl mb-4 text-lump-blue uppercase">Masculinity</h3>
@@ -390,8 +390,8 @@ export default function App() {
               <div className="bg-lump-blue p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl -rotate-2 text-white">
                 <h3 className="font-heading text-4xl sm:text-5xl mb-4 uppercase italic">Style</h3>
                 <ul className="font-comic text-lg sm:text-2xl list-disc list-inside">
-                  <li>Clowning & Satire</li>
-                  <li>Rough Theatre (Visible)</li>
+                  <li>Clowning</li>
+                  <li>Rough Theatre</li>
                   <li>Verbatim & Puppetry</li>
                   <li>Absurdism & Musicality</li>
                 </ul>
@@ -434,7 +434,7 @@ export default function App() {
             className="pt-40 pb-24 px-6 container mx-auto"
           >
             <div className="flex flex-col sm:flex-row justify-between items-baseline mb-12 sm:mb-16 gap-4">
-              <h2 className="font-heading text-6xl sm:text-8xl uppercase text-stroke-2 text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">GALLERY</h2>
+              <h2 className="font-heading font-black text-6xl sm:text-8xl uppercase text-stroke-2 text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">GALLERY</h2>
               <p className="font-comic text-xl sm:text-2xl max-w-sm italic opacity-70 text-center sm:text-left w-full sm:w-auto">Visual evidence of the absurdity.</p>
             </div>
             

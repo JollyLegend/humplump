@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Luckiest+Guy&family=Bangers&family=Inter:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Luckiest Guy", cursive;
-  --font-comic: "Bangers", cursive;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Sour Gummy", cursive;
+  --font-comic: "Sour Gummy", cursive;
+  --font-sans: "Sour Gummy", ui-sans-serif, system-ui, sans-serif;
   
   --color-lump-pink: #ff4bb3;
   --color-lump-blue: #37b9ff;
