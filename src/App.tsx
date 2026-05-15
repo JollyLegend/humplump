@@ -421,38 +421,38 @@ export default function App() {
             {/* Technical Specification - Screenshot Inspired */}
             <section className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 py-12">
               {/* Essentials Box */}
-              <div className="bg-lump-pink p-8 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[3rem] shadow-[0_15px_0_rgba(0,0,0,1)]">
-                <h3 className="font-heading text-4xl sm:text-5xl mb-8 uppercase text-white font-black">Essentials</h3>
-                <ul className="font-comic text-lg sm:text-2xl space-y-6 text-white font-bold">
-                  <li className="flex items-center gap-3">⏱️ <span><strong>Duration:</strong> 45 minutes</span></li>
-                  <li className="flex items-center gap-3">⚡ <span><strong>Set-Up/Strike:</strong> 20 mins each</span></li>
-                  <li className="flex items-center gap-3">🎭 <span><strong>Company:</strong> 4 Performers</span></li>
-                  <li className="flex items-center gap-3">💰 <span><strong>Fees:</strong> Contact clowns@humplump.com</span></li>
+              <div className="bg-lump-pink p-6 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[2.5rem] sm:rounded-[3rem] shadow-[0_10px_0_rgba(0,0,0,1)] sm:shadow-[0_15px_0_rgba(0,0,0,1)]">
+                <h3 className="font-heading text-3xl sm:text-5xl mb-6 sm:mb-8 uppercase text-white font-black break-words">Essentials</h3>
+                <ul className="font-comic text-base sm:text-2xl space-y-4 sm:space-y-6 text-white font-bold break-words">
+                  <li className="flex items-start gap-2 sm:gap-3">⏱️ <span className="leading-tight"><strong>Duration:</strong> 45 minutes</span></li>
+                  <li className="flex items-start gap-2 sm:gap-3">⚡ <span className="leading-tight"><strong>Set-Up/Strike:</strong> 20 mins each</span></li>
+                  <li className="flex items-start gap-2 sm:gap-3">🎭 <span className="leading-tight"><strong>Company:</strong> 4 Performers</span></li>
+                  <li className="flex items-start gap-2 sm:gap-3">💰 <span className="leading-tight"><strong>Fees:</strong> Contact clowns@humplump.com</span></li>
                 </ul>
               </div>
 
               {/* Logistics Box */}
-              <div className="bg-white p-8 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[3rem] shadow-[0_15px_0_rgba(0,0,0,1)] -rotate-1">
-                <h3 className="font-heading text-4xl sm:text-5xl mb-8 uppercase text-lump-blue font-black underline decoration-lump-pink">Logistics</h3>
-                <ul className="font-comic text-lg sm:text-2xl space-y-6 text-lump-black font-bold">
-                  <li className="flex items-center gap-3">♿ <span><strong>Access needs:</strong> None</span></li>
-                  <li className="flex items-center gap-3">🚐 <span><strong>Parking:</strong> Space for one van</span></li>
-                  <li className="flex items-center gap-3">📐 <span><strong>Space:</strong> 8m x 8m x 4m</span></li>
+              <div className="bg-white p-6 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[2.5rem] sm:rounded-[3rem] shadow-[0_10px_0_rgba(0,0,0,1)] sm:shadow-[0_15px_0_rgba(0,0,0,1)] -rotate-1">
+                <h3 className="font-heading text-3xl sm:text-5xl mb-6 sm:mb-8 uppercase text-lump-blue font-black underline decoration-lump-pink break-words">Logistics</h3>
+                <ul className="font-comic text-base sm:text-2xl space-y-4 sm:space-y-6 text-lump-black font-bold break-words">
+                  <li className="flex items-start gap-2 sm:gap-3">♿ <span className="leading-tight"><strong>Access needs:</strong> None</span></li>
+                  <li className="flex items-start gap-2 sm:gap-3">🚐 <span className="leading-tight"><strong>Parking:</strong> Space for one van</span></li>
+                  <li className="flex items-start gap-2 sm:gap-3">📐 <span className="leading-tight"><strong>Space:</strong> 8m x 8m x 4m</span></li>
                 </ul>
               </div>
 
               {/* Tech Box */}
-              <div className="bg-[#e74e00] p-8 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[3rem] shadow-[0_15px_0_rgba(0,0,0,1)] rotate-1">
-                <h3 className="font-heading text-4xl sm:text-5xl text-white mb-8 uppercase font-black italic">Tech</h3>
-                <ul className="font-comic text-lg sm:text-xl space-y-4 text-white font-bold">
-                  <li className="flex items-start gap-3">
-                    📢 <span><strong>No mics/PA:</strong> Acoustic & live vocal performance.</span>
+              <div className="bg-[#e74e00] p-6 sm:p-10 border-[6px] sm:border-[10px] border-lump-black rounded-[2.5rem] sm:rounded-[3rem] shadow-[0_10px_0_rgba(0,0,0,1)] sm:shadow-[0_15px_0_rgba(0,0,0,1)] rotate-1">
+                <h3 className="font-heading text-3xl sm:text-5xl text-white mb-6 sm:mb-8 uppercase font-black italic break-words">Tech</h3>
+                <ul className="font-comic text-base sm:text-xl space-y-4 text-white font-bold break-words">
+                  <li className="flex items-start gap-2 sm:gap-3">
+                    📢 <span className="leading-tight"><strong>No mics/PA:</strong> Acoustic & live vocal performance.</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    💡 <span><strong>House lights:</strong> Performs under found/stable light.</span>
+                  <li className="flex items-start gap-2 sm:gap-3">
+                    💡 <span className="leading-tight"><strong>House lights:</strong> Performs under found/stable light.</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    📦 <span><strong>Modular Set:</strong> Fully self-sufficient props & racks.</span>
+                  <li className="flex items-start gap-2 sm:gap-3">
+                    📦 <span className="leading-tight"><strong>Modular Set:</strong> Fully self-sufficient props & racks.</span>
                   </li>
                 </ul>
               </div>
