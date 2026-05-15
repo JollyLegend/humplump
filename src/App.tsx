@@ -295,9 +295,9 @@ export default function App() {
           >
             {/* Strap-line & Blurb */}
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-              <div className="flex-1 bg-lump-yellow p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
-                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase underline">The Strap-line</h3>
-                <p className="font-comic text-2xl sm:text-4xl italic leading-tight text-lump-pink drop-shadow-[1px_1px_0_rgba(0,0,0,1)]">
+              <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
+                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-green underline">The Strap-line</h3>
+                <p className="font-comic text-2xl sm:text-4xl italic leading-tight text-lump-black">
                   "Breaking the numbness: A satirical assault on the modern world through the eyes of the unhinged."
                 </p>
               </div>
@@ -385,7 +385,7 @@ export default function App() {
 
             {/* Genre & Style Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-12">
-              <div className="bg-lump-yellow p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-2">
+              <div className="bg-lump-green p-6 sm:p-10 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-2xl rotate-2">
                 <h3 className="font-heading text-4xl sm:text-5xl text-lump-black mb-4 uppercase italic">Genre</h3>
                 <p className="font-comic text-xl sm:text-2xl">Political & Social Satire</p>
               </div>
