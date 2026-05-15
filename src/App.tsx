@@ -54,21 +54,21 @@ const TEAM = [
 ];
 
 const QUOTES = [
-    "\"Clown-fed collisions with absurdity.\"",
-    "\"Six, maybe seven, skits. We honestly lost count.\"",
-    "\"Breaking through modern numbness.\"",
-    "\"Questioning the performance of male power.\"",
-    "\"The outrageous should still feel outrageous.\"",
-    "\"A theatrical playground for the unhinged.\"",
-    "\"Clowning, satire, and direct engagement.\"",
-    "\"Where laughter becomes a way into discomfort.\"",
-    "\"Real events turned into ridiculous theatre.\"",
-    "\"Exposing the contradictions of our world.\"",
-    "\"Rough theatre. Visible mechanics. Zero chill.\"",
-    "\"Witness the absurdity since " + new Date().toLocaleTimeString() + ".\"",
-    "\"Invite audiences to laugh, question and think again.\"",
-    "\"Politics, pop culture, and modern masculinity.\"",
-    "\"Making familiar events feel strange again.\""
+  "\"Sigma grindset: 4 clowns, 1 van, zero budget.\"",
+  "\"Looksmaxxing our prop budget by using actual garbage.\"",
+  "\"Maintaining a 60-minute mewing streak live on stage.\"",
+  "\"We haven't blinked in 45 minutes to maintain hunter eyes.\"",
+  "\"A High-Value theatrical experience for low-value attention spans.\"",
+  "\"Escaping the Matrix, but getting stuck in the costume rack.\"",
+  "\"Mogging the fourth wall.\"",
+  "\"Beta-orbiting the concept of a narrative structure.\"",
+  "\"Our canthal tilt is negative, but the vibes are immaculate.\"",
+  "\"Bone-smashing our way into the Fringe festival.\"",
+  "\"We only consume raw meat, tap water, and existential dread.\"",
+  "\"Red-pilling the audience with 6 (maybe 7) clown skits.\"",
+  "\"Top G theatre for bottom-tier budgets.\"",
+  "\"Practicing our jawline clenches in the dressing room.\"",
+  "\"You’re an alpha? Cool. We’re four grown men wearing fake noses.\""
 ];
 
 export default function App() {
@@ -148,8 +148,6 @@ export default function App() {
               
               <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center mt-12 sm:mt-0 landscape:mt-8">
                 <div className="text-center relative w-full px-4 sm:px-0">
-                  <Star className="absolute -top-32 -left-32 w-20 h-20 text-lump-pink fill-lump-pink animate-bounce hidden lg:block" />
-                  <Sparkles className="absolute -bottom-12 -right-12 w-24 h-24 text-lump-blue animate-pulse hidden lg:block" />
                   
                   {/* New Bubbly Logo Style */}
                   <motion.div 
@@ -418,7 +416,7 @@ export default function App() {
                 <ul className="font-comic text-lg sm:text-xl space-y-2">
                   <li>📢 <strong>No mics/PA:</strong> Acoustic & live vocal performance.</li>
                   <li>💡 <strong>House lights:</strong> Performs under found/stable light.</li>
-                  <li>📦 <strong>Modular Set:</strong> Wheeled clothing racks and prop crates remain visible throughout.</li>
+                  <li>📦 <strong>Modular Set:</strong> Clothing racks and prop crates remain visible throughout.</li>
                 </ul>
               </div>
             </section>
