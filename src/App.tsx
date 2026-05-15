@@ -15,8 +15,10 @@ import {
   Image as ImageIcon,
   Home as HomeIcon,
   X,
-  Mic2
+  Mic2,
+  Download
 } from "lucide-react";
+import { jsPDF } from "jspdf";
 
 const GALLERY_IMAGES = [
   { url: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/e01ca24b85d268e8ae99dd0f9fa0df698c1c024c/Gallery/Cheer.jpg", caption: "The Cheer" },
@@ -82,6 +84,70 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const downloadProposalPDF = () => {
+    const doc = new jsPDF();
+    const margin = 20;
+    let y = 30;
+
+    const addText = (text: string, size = 12, style = "normal", color = [0, 0, 0]) => {
+      doc.setFont("helvetica", style);
+      doc.setFontSize(size);
+      doc.setTextColor(color[0], color[1], color[2]);
+      
+      const lines = doc.splitTextToSize(text, 170);
+      doc.text(lines, margin, y);
+      y += (lines.length * (size * 0.5)) + 10;
+      
+      if (y > 270) {
+        doc.addPage();
+        y = 20;
+      }
+    };
+
+    // Header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(24);
+    doc.text("Pitch & Proposal — Hump Lump", margin, y);
+    y += 20;
+
+    addText("Title: 6 or 7 Skits", 16, "bold");
+    addText("Company Name: Hump Lump", 16, "bold");
+    
+    addText("Advertising Strap-line:", 14, "bold");
+    addText("Six, maybe seven, clown-fed collisions with the absurdity of the modern world.", 12);
+
+    addText("Company Values / Mission Statement:", 14, "bold");
+    addText("Hump Lump creates bold, playful and politically aware theatre that confronts the absurdity of contemporary politics, society and pop culture. Through clowning, satire, rough theatre and direct audience engagement, we aim to break through modern numbness and invite audiences to laugh, question and think again.", 12);
+
+    addText("Marketing Blurb:", 14, "bold");
+    addText("Feeling numb to the chaos of the world? 6 or 7 Skits throws politics, pop culture and modern masculinity into a clown-filled playground of satire. Through verbatim, puppetry, absurdism, music and audience interaction, Hump Lump turns real events into ridiculous, uncomfortable and strangely recognisable theatre.", 12);
+
+    addText("Synopsis of the Project:", 14, "bold");
+    addText("6 or 7 Skits is a political and social satire created by Hump Lump, a devised theatre company exploring how world events can be reimagined through clowning, rough theatre and absurd performance. The piece is structured as a non-linear sketch show made up of six, maybe seven, short skits. Each skit responds to a real-life political, social or pop-cultural event, using satire to expose the ridiculousness, contradictions and discomfort already present in the world around us.", 12);
+
+    addText("Creative Frame:", 14, "bold");
+    addText("The performance is framed as a “play within a play,” where literal clowns enter a theatrical playground to act out real-world figures, public narratives and media events. Rather than presenting these stories through realism, Hump Lump uses exaggeration, disruption and play to make familiar events feel strange again.", 12);
+
+    addText("Technical Specifications:", 14, "bold");
+    addText("• Show duration: 45 minutes", 12);
+    addText("• Set up / Strike: 20 minutes each", 12);
+    addText("• Company size: 4 Performers", 12);
+    addText("• Access needs: None", 12);
+    addText("• Parking Required: Space for one van", 12);
+    addText("• Space Required: 8m x 8m x 4m", 12);
+    addText("• Tech: Fully Self Sufficient (no mics, house lights, modular set)", 12);
+    addText("• Contact: clowns@humplump.com", 12, "bold", [255, 75, 179]);
+
+    addText("Risk Assessment Summary:", 14, "bold");
+    addText("• R1: THE LIFT - Full rehearsal at half-speed, proper lifting form, tight core, barefoot balance.", 10);
+    addText("• R2: SLIP HAZARD (CEREAL) - Minimum cereal usage, contained area, immediate strike sweep.", 10);
+    addText("• R3: LIVE COSTUME CHANGES - Rehearsed safe zones, locked rack wheels, perimeter crate placement.", 10);
+    addText("• R4: HIGH-IMPACT COMEDY - Blocked falling techniques, eye-contact cues, slow rehearsal.", 10);
+    addText("• R5: MANUAL HANDLING - Toolbox talk on safe lifting, mandatory team-lifting for heavy crates.", 10);
+
+    doc.save("Hump_Lump_Proposal.pdf");
+  };
+
   const Logo = () => (
     <motion.div 
       initial={{ y: -50, opacity: 0 }}
@@ -114,13 +180,6 @@ export default function App() {
           >
             <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Pitch</span>
-          </button>
-          <button 
-            onClick={() => setCurrentView('proposal')} 
-            className={`hover:text-indigo-500 hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'proposal' ? 'text-indigo-500 underline underline-offset-4 sm:underline-offset-8' : ''}`}
-          >
-            <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> 
-            <span className="hidden lg:inline">Proposal</span>
           </button>
           <button 
             onClick={() => setCurrentView('gallery')} 
@@ -292,13 +351,13 @@ export default function App() {
             {/* Strap-line & Blurb */}
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
-                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-green underline">The Strap-line</h3>
+                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-[#37b9ff] underline">The Strap-line</h3>
                 <p className="font-comic text-2xl sm:text-4xl italic leading-tight text-lump-black">
-                  "Six, maybe seven, clown-fed collisions with the absurdity of the modern world."
+                   "Six, maybe seven, clown-fed collisions with the absurdity of the modern world."
                 </p>
               </div>
               <div className="flex-1 bg-white p-8 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] rounded-[2rem]">
-                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-lump-blue underline">Marketing Blurb</h3>
+                <h3 className="font-heading text-3xl sm:text-4xl mb-4 uppercase text-[#37b9ff] underline">Marketing Blurb</h3>
                 <p className="font-comic text-xl sm:text-2xl leading-tight">
                   Feeling numb to the chaos of the world? 6 or 7 Skits throws politics, pop culture and modern masculinity into a clown-filled playground of satire. Through verbatim, puppetry, absurdism, music and audience interaction, Hump Lump turns real events into ridiculous, uncomfortable and strangely recognisable theatre.
                 </p>
@@ -306,49 +365,15 @@ export default function App() {
             </div>
 
             {/* Mission Statement */}
-            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)]">
+            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[16px_16px_0_rgba(0,0,0,1)] translate-x-1">
               <h2 className="font-heading font-black text-6xl sm:text-8xl text-lump-pink mb-6 uppercase transition-transform hover:-skew-x-12 inline-block">Mission</h2>
               <p className="font-comic text-2xl sm:text-4xl leading-tight">
                 Hump Lump creates bold, playful and politically aware theatre that confronts the absurdity of contemporary politics, society and pop culture. Through clowning, satire, rough theatre and direct audience engagement, we aim to break through modern numbness and invite audiences to laugh, question and think again.
               </p>
             </section>
 
-            {/* Creative Approach */}
-            <section className="bg-white p-6 sm:p-12 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(55,185,255,1)]">
-              <h2 className="font-heading text-5xl sm:text-7xl text-lump-blue mb-8 uppercase text-center sm:text-left">Our Creative Approach</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                  <div className="space-y-6">
-                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
-                      Framed as a <span className="bg-lump-yellow px-2 font-bold rotate-1 inline-block">“play within a play,”</span> where literal clowns enter a theatrical playground to act out real-world figures, public narratives and media events.
-                    </p>
-                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
-                      Rather than presenting these stories through realism, Hump Lump uses exaggeration, disruption and play to make <span className="bg-lump-blue text-white px-2">familiar events feel strange again</span>.
-                    </p>
-                  </div>
-                <div className="bg-lump-black p-4 sm:p-8 text-white rounded-3xl transform rotate-1">
-                  <h4 className="font-heading text-3xl sm:text-4xl mb-6 uppercase text-lump-pink underline">Key Tools</h4>
-                  <ul className="font-comic text-xl sm:text-3xl space-y-4">
-                    <li>🎭 Clowning & Satire</li>
-                    <li>🎈 Rough Theatre</li>
-                    <li>🌀 Verbatim Material</li>
-                    <li>🎵 Puppetry & Absurdism</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </motion.main>
-        )}
-
-        {currentView === 'proposal' && (
-          <motion.main
-            key="proposal"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto space-y-12 sm:space-y-24"
-          >
             {/* Project Synopsis */}
-            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)]">
+            <section className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2rem] shadow-[10px_10px_0_rgba(255,140,0,1)] -rotate-1">
               <h2 className="font-heading font-black text-5xl sm:text-7xl text-lump-orange mb-8 uppercase italic border-b-4 border-lump-black pb-4">Project Synopsis</h2>
               <div className="font-comic text-xl sm:text-3xl leading-relaxed space-y-6">
                 <p>
@@ -365,7 +390,7 @@ export default function App() {
               <h2 className="font-heading font-black text-5xl sm:text-7xl text-lump-pink uppercase text-center md:text-left">Key Content Pillars</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
-                  <h3 className="font-heading text-3xl mb-4 text-lump-blue uppercase">Masculinity</h3>
+                  <h3 className="font-heading text-3xl mb-4 text-[#375eff] uppercase">Masculinity</h3>
                   <p className="font-comic text-lg">As four male performers, we question the performance of male power, authority, ego, control and fragility across political and cultural spaces.</p>
                 </div>
                 <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
@@ -375,6 +400,30 @@ export default function App() {
                 <div className="bg-white p-8 border-4 border-lump-black rounded-3xl shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
                   <h3 className="font-heading text-3xl mb-4 text-pink-500 uppercase">Clown Archetypes</h3>
                   <p className="font-comic text-lg">Traditional clown archetypes such as the Whiteface, Auguste and Hobo/Tramp inform the company’s character work in a modern satirical context.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Creative Approach */}
+            <section className="bg-white p-6 sm:p-12 border-4 sm:border-8 border-lump-black shadow-[8px_8px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(55,185,255,1)] rotate-1">
+              <h2 className="font-heading text-5xl sm:text-7xl text-lump-blue mb-8 uppercase text-center sm:text-left">Our Creative Approach</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  <div className="space-y-6">
+                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                      Framed as a <span className="bg-lump-yellow px-2 font-bold rotate-1 inline-block">“play within a play,”</span> where literal clowns enter a theatrical playground to act out real-world figures, public narratives and media events.
+                    </p>
+                    <p className="font-comic text-xl sm:text-3xl leading-relaxed">
+                      Rather than presenting these stories through realism, Hump Lump uses exaggeration, disruption and play to make <span className="bg-lump-blue text-white px-2">familiar events feel strange again</span>.
+                    </p>
+                  </div>
+                <div className="bg-lump-black p-4 sm:p-8 text-white rounded-3xl transform -rotate-1">
+                  <h4 className="font-heading text-3xl sm:text-4xl mb-6 uppercase text-lump-pink underline">Key Tools</h4>
+                  <ul className="font-comic text-xl sm:text-3xl space-y-4">
+                    <li>🎭 Clowning & Satire</li>
+                    <li>🎈 Rough Theatre</li>
+                    <li>🌀 Verbatim Material</li>
+                    <li>🎵 Puppetry & Absurdism</li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -401,27 +450,166 @@ export default function App() {
             </div>
 
             {/* Technical Specification */}
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
               <div className="bg-lump-pink p-8 border-4 sm:border-8 border-lump-black text-white rounded-3xl -rotate-1">
-                <h3 className="font-heading text-4xl sm:text-5xl mb-6 uppercase underline">The Bare Essentials</h3>
-                <ul className="font-comic text-lg sm:text-2xl space-y-4">
-                  <li>📍 Space: 5m x 5m "playground"</li>
-                  <li>⏱️ Duration: 45 – 60 minutes</li>
-                  <li>⚡ Set-Up/Strike: 20 mins each</li>
-                  <li>🎭 Company: 4 Performers</li>
+                <h3 className="font-heading text-3xl sm:text-4xl mb-6 uppercase">Essentials</h3>
+                <ul className="font-comic text-lg sm:text-xl space-y-4">
+                  <li>⏱️ <strong>Duration:</strong> 45 minutes</li>
+                  <li>⚡ <strong>Set-Up/Strike:</strong> 20 mins each</li>
+                  <li>🎭 <strong>Company:</strong> 4 Performers</li>
+                  <li>💰 <strong>Fees:</strong> Contact clowns@humplump.com</li>
                 </ul>
               </div>
               <div className="bg-white p-8 border-4 sm:border-8 border-lump-black rounded-3xl rotate-1 shadow-[8px_8px_0_rgba(0,0,0,1)]">
-                <h3 className="font-heading text-4xl sm:text-5xl text-lump-blue mb-6 uppercase italic">Low-Footprint Tech</h3>
-                <ul className="font-comic text-lg sm:text-xl space-y-2">
-                  <li>📢 <strong>No mics/PA:</strong> Acoustic & live vocal performance.</li>
-                  <li>💡 <strong>House lights:</strong> Performs under found/stable light.</li>
-                  <li>📦 <strong>Modular Set:</strong> Clothing racks and prop crates remain visible throughout.</li>
+                <h3 className="font-heading text-3xl sm:text-4xl text-lump-blue mb-6 uppercase italic">Logistics</h3>
+                <ul className="font-comic text-lg sm:text-xl space-y-4">
+                  <li>♿ <strong>Access needs:</strong> None</li>
+                  <li>🚐 <strong>Parking:</strong> Space for one van</li>
+                  <li>📏 <strong>Space:</strong> 8m x 8m x 4m</li>
+                </ul>
+              </div>
+              <div className="bg-[#e74e00] p-8 border-4 sm:border-8 border-lump-black rounded-3xl -rotate-1 shadow-[8px_8px_0_rgba(0,0,0,1)]">
+                <h3 className="font-heading text-3xl sm:text-4xl text-white mb-6 uppercase">Tech</h3>
+                <ul className="font-comic text-lg sm:text-lg space-y-2 text-white">
+                  <li className="text-white">📢 <strong>No mics/PA:</strong> Acoustic & live vocal performance.</li>
+                  <li className="text-white">💡 <strong>House lights:</strong> Performs under found/stable light.</li>
+                  <li className="text-white">📦 <strong>Modular Set:</strong> Fully self-sufficient props & racks.</li>
                 </ul>
               </div>
             </section>
+
+            {/* Risk Assessment Section */}
+            <section className="mt-20 pt-16 border-t-8 border-lump-black">
+              <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-4">
+                <h2 className="font-heading font-black text-5xl sm:text-7xl uppercase text-lump-pink drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                  RISK ASSESSMENT
+                </h2>
+                <div className="bg-lump-black text-white font-comic px-4 py-2 rounded-lg -rotate-1">
+                  Revision 1.0 — Safety First, Clowning Second
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    id: "R1",
+                    title: "THE LIFT (SIGMA SKIT)",
+                    hazard: "Ishaan Jolly lifting Calvin Norris aggressively prior to the injection sequence.",
+                    persons: "Ishaan & Calvin (Back strains, hernia, impact injuries if dropped)",
+                    initial: "RS: 12",
+                    controls: [
+                      "Walked through and rehearsed at half-speed before every performance.",
+                      "Proper lifting form (bend at knees, keep back straight, lift with legs).",
+                      "Tight core/body tension to assist the lift.",
+                      "Barefoot performance for maximum balance and grip."
+                    ],
+                    target: "RS: 3",
+                    color: "bg-lump-pink"
+                  },
+                  {
+                    id: "R2",
+                    title: "SLIP HAZARD (CEREAL)",
+                    hazard: "Use of cereal to represent \"raw meat\" being crushed or dropped on floor.",
+                    persons: "Cast (Slipping, pulled muscles, bruising during movement)",
+                    initial: "RS: 8",
+                    controls: [
+                      "Limit cereal to the bare minimum required for the gag.",
+                      "Dropped in a contained, downstage area away from main running paths.",
+                      "Immediate sweep during strike or scene transition."
+                    ],
+                    target: "RS: 4",
+                    color: "bg-lump-blue"
+                  },
+                  {
+                    id: "R3",
+                    title: "LIVE COSTUME CHANGES",
+                    hazard: "Tripping over clothing, racks, or crates in the unlit \"playground\".",
+                    persons: "Cast (Tripping, blisters, abrasions, sprained ankles)",
+                    initial: "RS: 9",
+                    controls: [
+                      "Rehearsed \"safe zones\" for all discarded costumes.",
+                      "Clothing racks with locked wheels to prevent rolling/tipping.",
+                      "Prop crates clearly labeled and placed at the perimeter."
+                    ],
+                    target: "RS: 4",
+                    color: "bg-[#e74e00]"
+                  },
+                  {
+                    id: "R4",
+                    title: "HIGH-IMPACT COMEDY",
+                    hazard: "Impact injuries from \"Trump glitch\" drops or aggressive podcast collisions.",
+                    persons: "Cast (Head bumps, joint injuries, heavy bruising)",
+                    initial: "RS: 9",
+                    controls: [
+                      "Strictly blocked falls with safe landing techniques (absorbing impact).",
+                      "Environmental awareness and eye-contact cues before lunges.",
+                      "Slow rehearsals to prepare for slips or accidental contact."
+                    ],
+                    target: "RS: 3",
+                    color: "bg-lump-green"
+                  },
+                  {
+                    id: "R5",
+                    title: "MANUAL HANDLING",
+                    hazard: "Lifting/moving heavy boxes or seating blocks during the rapid set-up and strike.",
+                    persons: "Cast (Pulled or strained muscles, back injuries, or dropping items on toes)",
+                    initial: "RS: 6",
+                    controls: [
+                      "All actors utilize safe manual handling/lifting techniques (Toolbox talk prior to get-in).",
+                      "Heavy crates/blocks must be team-lifted if necessary."
+                    ],
+                    target: "RS: 2",
+                    color: "bg-lump-yellow"
+                  }
+                ].map((risk) => (
+                  <div key={risk.id} className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-4 border-lump-black rounded-2xl overflow-hidden shadow-[6px_6px_0_rgba(0,0,0,1)] bg-white">
+                    <div className={`${risk.color} lg:col-span-1 flex items-center justify-center p-4 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black`}>
+                      <span className="font-heading text-4xl text-white">{risk.id}</span>
+                    </div>
+                    <div className="lg:col-span-3 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
+                      <h4 className="font-heading text-xl mb-2 uppercase">{risk.title}</h4>
+                      <p className="font-comic text-sm opacity-80">{risk.hazard}</p>
+                    </div>
+                    <div className="lg:col-span-2 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black bg-gray-50">
+                      <h4 className="font-heading text-xs uppercase opacity-50 mb-2">Affected</h4>
+                      <p className="font-comic text-sm">{risk.persons}</p>
+                    </div>
+                    <div className="lg:col-span-4 p-6 border-b-4 lg:border-b-0 lg:border-r-4 border-lump-black">
+                      <h4 className="font-heading text-xs uppercase opacity-50 mb-2">Control Measures</h4>
+                      <ul className="font-comic text-sm list-disc list-inside space-y-1">
+                        {risk.controls.map((c, i) => <li key={i}>{c}</li>)}
+                      </ul>
+                    </div>
+                    <div className="lg:col-span-2 p-6 flex flex-row lg:flex-col justify-around items-center gap-4 bg-gray-100">
+                      <div className="text-center">
+                        <div className="text-[10px] font-heading uppercase opacity-50">Initial</div>
+                        <div className="font-heading text-lg text-red-600">{risk.initial}</div>
+                      </div>
+                      <div className="w-px h-8 lg:w-8 lg:h-px bg-lump-black opacity-20"></div>
+                      <div className="text-center">
+                        <div className="text-[10px] font-heading uppercase opacity-50">Target</div>
+                        <div className="font-heading text-lg text-green-600">{risk.target}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* PDF Download Section */}
+            <section className="flex justify-center pt-16">
+              <button 
+                onClick={downloadProposalPDF}
+                className="bg-[#614bff] text-white font-heading text-3xl sm:text-5xl px-12 py-6 border-4 sm:border-8 border-lump-black shadow-[10px_10px_0_rgba(0,0,0,1)] rounded-full hover:scale-110 active:scale-95 transition-all flex items-center gap-4 group"
+              >
+                <Download className="w-10 h-10 group-hover:bounce transition-transform" />
+                <span>Download Full Proposal PDF</span>
+              </button>
+            </section>
           </motion.main>
         )}
+
+
 
         {currentView === 'gallery' && (
           <motion.main
