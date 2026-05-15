@@ -89,8 +89,8 @@ export default function App() {
       onClick={() => setCurrentView('home')}
       className="flex items-center gap-0 font-heading font-black text-3xl md:text-5xl lg:text-6xl cursor-pointer select-none group"
     >
-      <span className="text-lump-pink text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:-rotate-3 group-hover:scale-110">HUMP</span>
-      <span className="text-lump-blue text-stroke-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:rotate-3 group-hover:scale-110">LUMP</span>
+      <span className="text-lump-pink drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:-rotate-3 group-hover:scale-110">HUMP</span>
+      <span className="text-lump-blue drop-shadow-[0_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_4px_0_rgba(0,0,0,1)] transition-transform group-hover:rotate-3 group-hover:scale-110">LUMP</span>
     </motion.div>
   );
 
@@ -158,9 +158,9 @@ export default function App() {
                     className="flex flex-col items-center mb-8 sm:mb-12 landscape:mb-6"
                   >
                     {/* Hump Lump Bubbly */}
-                    <h1 className="flex items-center gap-0 font-heading font-black text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_8px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_16px_0_rgba(0,0,0,1)]">
-                      <span className="text-lump-pink text-stroke-4 lg:text-stroke-8 -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">HUMP</span>
-                      <span className="text-lump-blue text-stroke-4 lg:text-stroke-8 rotate-3 transition-transform hover:rotate-0">LUMP</span>
+                    <h1 className="flex items-center gap-0 font-heading font-black text-[12vw] xs:text-[10vw] sm:text-[8rem] md:text-[7rem] lg:text-[10rem] leading-none mb-4 select-none drop-shadow-[0_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[0_8px_0_rgba(0,0,0,1)]">
+                      <span className="text-lump-pink -rotate-3 transition-transform hover:rotate-0 -mr-2 sm:-mr-4">HUMP</span>
+                      <span className="text-lump-blue rotate-3 transition-transform hover:rotate-0">LUMP</span>
                     </h1>
 
                     {/* - Presents - */}
@@ -185,7 +185,7 @@ export default function App() {
                       A theatrical mirror held up to the face of modern masculinity. Surprisingly musical.
                     </p>
                     
-                    <div className="h-12 sm:h-16 flex items-center justify-center pointer-events-none mb-12 lg:mb-0">
+                    <div className="h-12 sm:h-16 flex items-center justify-center pointer-events-none mt-12 sm:mt-20 mb-12 lg:mb-0">
                       <AnimatePresence mode="wait">
                         <motion.p
                           key={activeQuote}
@@ -245,7 +245,7 @@ export default function App() {
               <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 sm:mb-24 gap-6 sm:gap-8 text-center md:text-left">
                   <h2 className="font-heading font-black text-7xl sm:text-9xl leading-none uppercase drop-shadow-[0_3px_0_rgba(55,185,255,1)] sm:drop-shadow-[0_6px_0_rgba(55,185,255,1)] transition-all hover:scale-105 active:scale-95 cursor-default">
-                    THE <br /> CREW
+                    THE CREW
                   </h2>
                   <div className="max-w-xs sm:max-w-sm font-comic text-2xl sm:text-3xl rotate-0 sm:rotate-2 bg-lump-yellow p-4 sm:p-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[12px_12px_0_rgba(0,0,0,1)] rounded-xl">
                     Four clowns. One mission. Zero chill. 
@@ -271,7 +271,7 @@ export default function App() {
                         />
                       </div>
                       <div className="mt-4 sm:mt-8 text-center">
-                        <h3 className="font-heading text-4xl sm:text-5xl uppercase tracking-tighter text-stroke-2 text-white drop-shadow-[2px_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                        <h3 className="font-heading text-4xl sm:text-5xl uppercase tracking-tighter text-lump-black">
                           {member.name}
                         </h3>
                       </div>
@@ -434,7 +434,7 @@ export default function App() {
             className="pt-40 pb-24 px-6 container mx-auto"
           >
             <div className="flex flex-col sm:flex-row justify-between items-baseline mb-12 sm:mb-16 gap-4">
-              <h2 className="font-heading font-black text-6xl sm:text-8xl uppercase text-stroke-2 text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">GALLERY</h2>
+              <h2 className="font-heading font-black text-6xl sm:text-8xl uppercase text-lump-blue drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] text-center sm:text-left w-full sm:w-auto">GALLERY</h2>
               <p className="font-comic text-xl sm:text-2xl max-w-sm italic opacity-70 text-center sm:text-left w-full sm:w-auto">Visual evidence of the absurdity.</p>
             </div>
             
