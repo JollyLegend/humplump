@@ -367,6 +367,32 @@ export default function App() {
               </div>
             </section>
 
+            {/* Trailer Section */}
+            <section className="px-4">
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-lump-black p-4 rounded-t-3xl border-x-4 border-t-4 border-lump-black flex items-center gap-3">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full" />
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+                    <div className="w-3 h-3 bg-green-500 rounded-full" />
+                  </div>
+                  <span className="font-heading text-white text-lg uppercase tracking-widest italic">Hump Lump Cinema: The Trailer</span>
+                </div>
+                <div className="aspect-video w-full bg-black border-4 sm:border-8 border-lump-black shadow-[10px_10px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rounded-b-3xl overflow-hidden relative">
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/pCeyPrb1ElQ" 
+                    title="6 or 7 Skits Trailer" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+              </div>
+            </section>
+
             {/* Core Identity Bento Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
               <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-12">
