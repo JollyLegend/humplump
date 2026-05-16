@@ -16,7 +16,8 @@ import {
   Home as HomeIcon,
   X,
   Mic2,
-  Download
+  Download,
+  Mail
 } from "lucide-react";
 
 const GALLERY_IMAGES = [
@@ -74,7 +75,7 @@ const QUOTES = [
 
 export default function App() {
   const [activeQuote, setActiveQuote] = useState(0);
-  const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'proposal', 'gallery'
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'gallery', 'contact'
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -122,6 +123,13 @@ export default function App() {
           >
             <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6" /> 
             <span className="hidden lg:inline">Gallery</span>
+          </button>
+          <button 
+            onClick={() => setCurrentView('contact')} 
+            className={`hover:text-lump-pink hover:scale-110 transition-all flex items-center gap-2 flex-shrink-0 ${currentView === 'contact' ? 'text-lump-pink underline underline-offset-4 sm:underline-offset-8' : ''}`}
+          >
+            <Mail className="w-5 h-5 sm:w-6 sm:h-6" /> 
+            <span className="hidden lg:inline">Contact</span>
           </button>
         </div>
       </nav>
@@ -655,6 +663,91 @@ export default function App() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </motion.main>
+        )}
+
+        {currentView === 'contact' && (
+          <motion.main
+            key="contact"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="pt-32 sm:pt-40 pb-24 px-6 container mx-auto max-w-4xl"
+          >
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="font-heading font-black text-6xl sm:text-8xl uppercase text-lump-pink drop-shadow-[4px_4px_0_rgba(0,0,0,1)] sm:drop-shadow-[8px_8px_0_rgba(0,0,0,1)] inline-block -rotate-1 mb-6">
+                CONTACT US
+              </h2>
+              <p className="font-comic text-xl sm:text-2xl italic opacity-70">
+                Summon the clowns for your next event or existential crisis.
+              </p>
+            </div>
+
+            <div className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2.5rem] shadow-[10px_10px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rotate-1">
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const name = formData.get('name');
+                  const subject = formData.get('subject');
+                  const message = formData.get('message');
+                  const mailtoLink = `mailto:clowns@humplump.com?subject=${encodeURIComponent(String(subject))} - from ${encodeURIComponent(String(name))}&body=${encodeURIComponent(String(message))}`;
+                  window.location.href = mailtoLink;
+                }}
+                className="space-y-6 sm:space-y-8"
+              >
+                <div className="space-y-2">
+                  <label htmlFor="name" className="font-heading text-2xl uppercase tracking-tighter">Your Name</label>
+                  <input 
+                    required
+                    type="text" 
+                    id="name"
+                    name="name"
+                    placeholder="E.g. An Intrigued Human" 
+                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-pink/20 transition-all placeholder:opacity-50"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="font-heading text-2xl uppercase tracking-tighter">Subject</label>
+                  <input 
+                    required
+                    type="text" 
+                    id="subject"
+                    name="subject"
+                    placeholder="E.g. Booking Query / Fan Mail / Complaint" 
+                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-blue/20 transition-all placeholder:opacity-50"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="font-heading text-2xl uppercase tracking-tighter">Message</label>
+                  <textarea 
+                    required
+                    id="message"
+                    name="message"
+                    rows={5}
+                    placeholder="Type your absurd transmission here..." 
+                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-orange/20 transition-all placeholder:opacity-50 resize-none"
+                  />
+                </div>
+
+                <button 
+                  type="submit"
+                  className="w-full bg-lump-pink text-white font-heading text-3xl sm:text-4xl py-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 group"
+                >
+                  <Mail className="w-8 h-8 group-hover:scale-125 transition-transform" />
+                  <span>SEND TRANSMISSION</span>
+                </button>
+              </form>
+
+              <div className="mt-8 pt-8 border-t-4 border-lump-black/10 text-center">
+                <p className="font-comic text-lg opacity-60">
+                  Or just yell into the void, we'll probably hear you.
+                </p>
+                <a href="mailto:clowns@humplump.com" className="font-heading text-xl text-lump-blue hover:underline">clowns@humplump.com</a>
+              </div>
             </div>
           </motion.main>
         )}
