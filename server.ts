@@ -11,8 +11,14 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Health check
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", env: process.env.NODE_ENV });
+  });
+
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
+    console.log("Transmission attempt received...");
     const { name, email, subject, message } = req.body;
 
     console.log("-----------------------------------------");
