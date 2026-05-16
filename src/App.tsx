@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Tv, 
@@ -76,6 +76,61 @@ const QUOTES = [
 export default function App() {
   const [activeQuote, setActiveQuote] = useState(0);
   const [currentView, setCurrentView] = useState('home'); // 'home', 'pitch', 'gallery', 'contact'
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [submissionData, setSubmissionData] = useState({ name: '', email: '', subject: '', message: '' });
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setSubmissionData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+    if (!submissionData.name.trim()) errors.name = "The clowns need to know who you are!";
+    if (!submissionData.email.trim()) errors.email = "Where shall we send the absurdity back to?";
+    else if (!/^\S+@\S+\.\S+$/.test(submissionData.email)) errors.email = "This email looks too normal. Try a real one.";
+    if (!submissionData.subject.trim()) errors.subject = "Give your transmission a title!";
+    if (!submissionData.message.trim()) errors.message = "Don't leave the void empty!";
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setFormStatus('sending');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (!response.ok) throw new Error('Transmission failed');
+
+      setFormStatus('success');
+      // Reset data
+      setSubmissionData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setFormErrors({ form: "The transmission was intercepted by cosmic interference. Please try again or email us directly." });
+      setFormStatus('idle');
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -684,67 +739,120 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2.5rem] shadow-[10px_10px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rotate-1">
-              <form 
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const name = formData.get('name');
-                  const subject = formData.get('subject');
-                  const message = formData.get('message');
-                  const mailtoLink = `mailto:clowns@humplump.com?subject=${encodeURIComponent(String(subject))} - from ${encodeURIComponent(String(name))}&body=${encodeURIComponent(String(message))}`;
-                  window.location.href = mailtoLink;
-                }}
-                className="space-y-6 sm:space-y-8"
-              >
-                <div className="space-y-2">
-                  <label htmlFor="name" className="font-heading text-2xl uppercase tracking-tighter">Your Name</label>
-                  <input 
-                    required
-                    type="text" 
-                    id="name"
-                    name="name"
-                    placeholder="E.g. An Intrigued Human" 
-                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-pink/20 transition-all placeholder:opacity-50"
-                  />
-                </div>
+            <div className="bg-white border-4 sm:border-8 border-lump-black p-6 sm:p-12 rounded-[2.5rem] shadow-[10px_10px_0_rgba(0,0,0,1)] sm:shadow-[20px_20px_0_rgba(0,0,0,1)] rotate-1 relative">
+              <AnimatePresence mode="wait">
+                {formStatus === 'success' ? (
+                  <motion.div 
+                    key="success"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="text-center py-12 space-y-8"
+                  >
+                    <div className="w-24 h-24 bg-lump-green rounded-full border-4 border-lump-black flex items-center justify-center mx-auto shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                      <Sparkles className="w-12 h-12 text-lump-black" />
+                    </div>
+                    <h3 className="font-heading text-4xl sm:text-6xl uppercase text-lump-pink">TRANSMISSION RECEIVED!</h3>
+                    <p className="font-comic text-xl sm:text-2xl max-w-md mx-auto">
+                      Your message has been hurled into the clown-void. Expect a ridiculous reply soon.
+                    </p>
+                    <button 
+                      onClick={() => setFormStatus('idle')}
+                      className="bg-lump-blue text-white font-heading text-2xl px-8 py-4 border-4 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-full hover:scale-110 active:scale-95 transition-all"
+                    >
+                      SEND ANOTHER?
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form 
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleFormSubmit}
+                    className="space-y-6 sm:space-y-8"
+                  >
+                    {formErrors.form && (
+                      <div className="bg-lump-pink p-4 rounded-xl border-4 border-lump-black text-white font-comic text-center animate-bounce">
+                        <p>{formErrors.form}</p>
+                      </div>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="font-heading text-2xl uppercase tracking-tighter">Your Name</label>
+                        <input 
+                          type="text" 
+                          id="name"
+                          name="name"
+                          value={submissionData.name}
+                          onChange={handleInputChange}
+                          placeholder="E.g. An Intrigued Human" 
+                          className={`w-full bg-lump-yellow/30 border-4 ${formErrors.name ? 'border-lump-pink' : 'border-lump-black'} p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-pink/20 transition-all placeholder:opacity-50`}
+                        />
+                        {formErrors.name && <p className="text-lump-pink font-comic text-sm font-bold italic">{formErrors.name}</p>}
+                      </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="font-heading text-2xl uppercase tracking-tighter">Subject</label>
-                  <input 
-                    required
-                    type="text" 
-                    id="subject"
-                    name="subject"
-                    placeholder="E.g. Booking Query / Fan Mail / Complaint" 
-                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-blue/20 transition-all placeholder:opacity-50"
-                  />
-                </div>
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="font-heading text-2xl uppercase tracking-tighter">Your Email</label>
+                        <input 
+                          type="email" 
+                          id="email"
+                          name="email"
+                          value={submissionData.email}
+                          onChange={handleInputChange}
+                          placeholder="clown@example.com" 
+                          className={`w-full bg-lump-yellow/30 border-4 ${formErrors.email ? 'border-lump-pink' : 'border-lump-black'} p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-blue/20 transition-all placeholder:opacity-50`}
+                        />
+                        {formErrors.email && <p className="text-lump-pink font-comic text-sm font-bold italic">{formErrors.email}</p>}
+                      </div>
+                    </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="font-heading text-2xl uppercase tracking-tighter">Message</label>
-                  <textarea 
-                    required
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Type your absurd transmission here..." 
-                    className="w-full bg-lump-yellow/30 border-4 border-lump-black p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-orange/20 transition-all placeholder:opacity-50 resize-none"
-                  />
-                </div>
+                    <div className="space-y-2">
+                      <label htmlFor="subject" className="font-heading text-2xl uppercase tracking-tighter">Subject</label>
+                      <input 
+                        type="text" 
+                        id="subject"
+                        name="subject"
+                        value={submissionData.subject}
+                        onChange={handleInputChange}
+                        placeholder="E.g. Booking Query / Fan Mail / Complaint" 
+                        className={`w-full bg-lump-yellow/30 border-4 ${formErrors.subject ? 'border-lump-pink' : 'border-lump-black'} p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-blue/20 transition-all placeholder:opacity-50`}
+                      />
+                      {formErrors.subject && <p className="text-lump-pink font-comic text-sm font-bold italic">{formErrors.subject}</p>}
+                    </div>
 
-                <button 
-                  type="submit"
-                  className="w-full bg-lump-pink text-white font-heading text-3xl sm:text-4xl py-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 group"
-                >
-                  <Mail className="w-8 h-8 group-hover:scale-125 transition-transform" />
-                  <span>SEND TRANSMISSION</span>
-                </button>
-              </form>
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="font-heading text-2xl uppercase tracking-tighter">Message</label>
+                      <textarea 
+                        id="message"
+                        name="message"
+                        rows={5}
+                        value={submissionData.message}
+                        onChange={handleInputChange}
+                        placeholder="Type your absurd transmission here..." 
+                        className={`w-full bg-lump-yellow/30 border-4 ${formErrors.message ? 'border-lump-pink' : 'border-lump-black'} p-4 rounded-xl font-comic text-xl focus:outline-none focus:ring-4 ring-lump-orange/20 transition-all placeholder:opacity-50 resize-none`}
+                      />
+                      {formErrors.message && <p className="text-lump-pink font-comic text-sm font-bold italic">{formErrors.message}</p>}
+                    </div>
+
+                    <button 
+                      type="submit"
+                      disabled={formStatus === 'sending'}
+                      className="w-full bg-lump-pink text-white font-heading text-3xl sm:text-4xl py-4 sm:py-6 border-4 sm:border-8 border-lump-black shadow-[6px_6px_0_rgba(0,0,0,1)] rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {formStatus === 'sending' ? (
+                        <div className="animate-spin rounded-full h-8 w-8 border-4 border-white border-t-transparent" />
+                      ) : (
+                        <Mail className="w-8 h-8 group-hover:scale-125 transition-transform" />
+                      )}
+                      <span>{formStatus === 'sending' ? 'TRANSMITTING...' : 'SEND TRANSMISSION'}</span>
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
 
               <div className="mt-8 pt-8 border-t-4 border-lump-black/10 text-center">
                 <p className="font-comic text-lg opacity-60">
-                  Or just yell into the void, we'll probably hear you.
+                  Direct submission enabled. We'll get back to you via the email provided.
                 </p>
                 <a href="mailto:clowns@humplump.com" className="font-heading text-xl text-lump-blue hover:underline">clowns@humplump.com</a>
               </div>
