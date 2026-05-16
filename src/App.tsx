@@ -112,26 +112,33 @@ export default function App() {
     setFormStatus('sending');
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(submissionData),
+        body: JSON.stringify({
+          access_key: "a478655e-5cbe-47f2-a6e5-f3b96dab0c88",
+          name: submissionData.name,
+          email: submissionData.email,
+          subject: submissionData.subject,
+          message: submissionData.message,
+          from_name: "HUMP LUMP WEB"
+        }),
       });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Server error response:", errorText);
-        throw new Error(`Transmission failed: ${response.status}`);
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || 'Transmission failed');
       }
 
       setFormStatus('success');
-      // Reset data
       setSubmissionData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Submission error:", error);
-      setFormErrors({ form: "The transmission was intercepted by cosmic interference. Please try again or email us directly." });
+      setFormErrors({ form: error.message || "The transmission was intercepted by cosmic interference. Please try again." });
       setFormStatus('idle');
     }
   };
