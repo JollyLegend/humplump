@@ -46,7 +46,7 @@ const TEAM = [
   { 
     name: "Hayden", 
     color: "bg-lump-orange", 
-    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/refs/heads/main/Crew/Hayden.jpg" 
+    image: "https://raw.githubusercontent.com/JollyLegend/humplump-pictures/d0a49d1b74e8be88bfe74114b0e152f9161c724f/Crew/Hayden.jpg" 
   },
   { 
     name: "Jonathan", 
